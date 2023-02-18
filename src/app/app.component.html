@@ -1,0 +1,26 @@
+
+<!-- <div class="sticky-top"> -->
+
+    <!-- Topbar Start -->
+    <app-topbar></app-topbar>
+    <!-- Topbar End -->
+    
+    
+    <!-- Navbar Start -->
+    <app-navbar [inputexemple]="this.val"></app-navbar>
+    <!-- Navbar End -->
+<!-- </div> -->
+
+
+    <!-- Home Page Start -->
+    <!-- <app-home-page (outputexemple)="reciveData($event)"></app-home-page> -->
+    <router-outlet (activate)="onActivate()" (outputexemple)="reciveData($event)"></router-outlet>
+    <!-- Home Page End -->
+
+    <!-- Footer Start -->
+    <app-footer-page></app-footer-page>
+    <!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a (click)="scroolTop()" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

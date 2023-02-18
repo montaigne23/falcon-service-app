@@ -1,0 +1,22 @@
+<div class="container-fluid pt-5 pb-3">
+    <!-- <div class="row px-xl-5"> -->
+
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let item of offer">
+                <ng-template carouselSlide>
+                    <!-- <div class="col-md-6"> -->
+                        <div class="product-offer mb-30" style="height: 300px;">
+                            <img class="img-fluid" [src]="item.image.src" [alt]="item.image.alt" [title]="item.image.title">
+                            <div class="offer-text">
+                                <h6 class="text-white text-uppercase">Save {{item.save}}</h6>
+                                <h3 class="text-white mb-3">Special Offer</h3>
+                                <a href="" class="btn btn-primary">Shop Now</a>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+        <!-- </div> -->
+</div>
+%

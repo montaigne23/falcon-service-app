@@ -1,0 +1,14 @@
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-container *ngFor="let item of images">
+                        <ng-template carouselSlide> <div class="bg-light p-4">
+                            <img [src]="item.src" [alt]="item.alt" [title]="item.title">
+                        </div></ng-template> 
+                    </ng-container>
+                    <!-- <ng-template carouselSlide [dataMerge]="10"><div style="width: 200px; height: 200px;background-color: black;"></div></ng-template> -->
+                </owl-carousel-o>                
+            </div>
+    </div>
+</div>
