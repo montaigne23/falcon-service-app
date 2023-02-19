@@ -301,3 +301,12 @@ $input-placeholder-color: #999999;
         transform: translateY(-15px);
     }
 }
+
+.logo img{
+    min-width: 50px;
+    max-width: 80px;
+    min-height: 50px;
+    max-height: 80px;
+    width: 30%;
+    height: 30%;
+}
