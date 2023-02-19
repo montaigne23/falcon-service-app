@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit{
 
   @Output() outputexemple: EventEmitter<any> = new EventEmitter()
 
-  constructor(private _TestserviceService : TestserviceService){
+  constructor(public _TestserviceService : TestserviceService){
 
   }
   sendData(){
