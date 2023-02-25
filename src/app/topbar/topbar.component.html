@@ -5,8 +5,8 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">Sign in</button>
-                        <button class="dropdown-item" type="button">Sign up</button>
+                        <button class="dropdown-item" [routerLink]="['account/login']" type="button">Sign in</button>
+                        <button class="dropdown-item" [routerLink]="['account/signup']" type="button">Sign up</button>
                     </div>
                 </div>
                 <div class="btn-group mx-2">
@@ -16,7 +16,7 @@
                       <!-- <button class="dropdown-item" type="button">EUR</button>
                           <button class="dropdown-item" type="button">USD</button> -->
                     </div>
-                </div>
+                </div> 
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">EN</button>
                     <div class="dropdown-menu dropdown-menu-right">

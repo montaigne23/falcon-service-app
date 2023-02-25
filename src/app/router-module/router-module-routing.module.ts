@@ -1,5 +1,7 @@
 import { NgModule, Output} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginpageComponent } from '../account/loginpage/loginpage.component';
+import { SignuppageComponent } from '../account/signuppage/signuppage.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { ShopDetailComponent } from '../shop-detail/shop-detail.component';
 import { ShopPageComponent } from '../shop-page/shop-page.component';
@@ -10,7 +12,9 @@ const routes: Routes = [
   { path: "home",   component: HomePageComponent},
   {path:"shop", component: ShopPageComponent},
 {path: "shop/:id", component: ShopDetailComponent},
-{path: "shopping-cart", component: ShoppingCartComponent}
+{path: "shopping-cart", component: ShoppingCartComponent},
+{path:'account/login', component: LoginpageComponent},
+{path:'account/signup', component: SignuppageComponent} 
 ];
 
 @Output('activate')

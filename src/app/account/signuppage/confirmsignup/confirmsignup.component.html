@@ -1,0 +1,81 @@
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" routerLink="/home">Home</a>
+                    <span class="breadcrumb-item active">Create New Customer account</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+  
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>S'inscrire</h2>
+      <form [formGroup]="signupForm2" (ngSubmit)="onSignupfinale()">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input formControlName="nom" class="form-control" id="nom" placeholder="Entrez votre nom" readonly>
+          <div *ngIf="signupForm2.controls['nom'].invalid && (signupForm2.controls['nom'].dirty || signupForm2.controls['nom'].touched)" class="text-danger">
+              <div *ngIf="signupForm2.controls['nom'].errors?.['required']">Le nom est requis.</div>
+            </div>
+       </div>
+      <div class="form-group">
+          <label for="prenom">Prenom</label>
+          <input formControlName="prenom" class="form-control" id="prenom" placeholder="Entrez votre prénom" readonly>
+          <div *ngIf="signupForm2.controls['prenom'].invalid && (signupForm2.controls['prenom'].dirty || signupForm2.controls['prenom'].touched)" class="text-danger">
+              <div *ngIf="signupForm2.controls['prenom'].errors?.['required']">Le nom est requis.</div>
+            </div>
+       </div>
+    <div class="form-group">
+      <label for="email">Adresse e-mail</label>
+      <input formControlName="email" type="email" class="form-control" id="email" placeholder="Entrez votre adresse e-mail" readonly>
+      <div *ngIf="signupForm2.controls['email'].invalid && (signupForm2.controls['email'].dirty || signupForm2.controls['email'].touched)" class="text-danger">
+        <div *ngIf="signupForm2.controls['email'].errors?.['required']">L'adresse e-mail est requise.</div>
+        <div *ngIf="signupForm2.controls['email'].errors?.['email']">L'adresse e-mail doit être valide.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nom_utilisateur">Nom d'utilisateur</label>
+      <input formControlName="nom_utilisateur" class="form-control" id="nom_utilisateur" placeholder="Entrez votre nom d'utilisateur" >
+      <div *ngIf="signupForm2.controls['nom_utilisateur'].invalid && (signupForm2.controls['nom_utilisateur'].dirty || signupForm2.controls['nom_utilisateur'].touched)" class="text-danger">
+          <div *ngIf="signupForm2.controls['nom_utilisateur'].errors?.['required']">Le nom est requis.</div>
+        </div>
+   </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-group-append">
+          <input formControlName="password" type="{{ hidePassword ? 'password' : 'text' }}" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+              <button class="btn " type="button" (click)="hidePassword = !hidePassword">
+                  <i *ngIf="this.hidePassword" class="fa fa-eye"></i>
+                  <i *ngIf="!this.hidePassword"  class="fa fa-eye-slash"></i>
+              </button>
+            </div>
+          <div *ngIf="signupForm2.controls['password'].invalid && (signupForm2.controls['password'].dirty || signupForm2.controls['password'].touched)" class="text-danger">
+            <div *ngIf="signupForm2.controls['password'].errors?.['required']">Le mot de passe est requis.</div>
+            <div *ngIf="signupForm2.controls['password'].errors?.['pattern']">Le mot de passe doit contenir au moins 8 caractères, avec au moins 1 chiffre et 1 caractère.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirmer le mot de passe</label>
+          <input formControlName="confirmPassword" type="{{ hidePassword ? 'password' : 'text' }}" class="form-control" id="confirm-password" placeholder="Confirmez votre mot de passe">
+          <div *ngIf="signupForm2.controls['confirmPassword'].invalid && (signupForm2.controls['confirmPassword'].dirty || signupForm2.controls['confirmPassword'].touched)" class="text-danger">
+            <div *ngIf="signupForm2.controls['confirmPassword'].errors?.['required']">La confirmation du mot de passe est requise.</div>
+            <div *ngIf="signupForm2.controls['confirmPassword'].errors?.['passwordMismatch']">Les mots de passe ne correspondent pas.</div>
+          </div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="language">Langue</label>
+        <select formControlName="language" class="form-control" id="language" >
+          <option value="fr">Français</option>
+          <option value="en">Anglais</option>
+        </select>
+      </div> -->
+        <button class="btn text-white btn-danger" (click)="annuler()">Annuler <i class="bi bi-trash text-white"></i></button>          
+        <button type="submit" class="btn btn-primary text-white float-right" [disabled]="signupForm2.invalid">Confirmer <i class="bi bi-check-circle text-success fs-5"></i></button>          
+      </form>
+    </div>
+  </div>

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
@@ -20,6 +21,11 @@ import { ShopPageComponent } from './shop-page/shop-page.component';
 import { ShopDetailComponent } from './shop-detail/shop-detail.component';
 import { ShopProductStartComponent } from './shop-page/shop-product-start/shop-product-start.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { LoginpageComponent } from './account/loginpage/loginpage.component';
+import { SignuppageComponent } from './account/signuppage/signuppage.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confirmsignup.component';
+import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,12 +44,19 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ShopDetailComponent,
     ShopProductStartComponent,
     ShoppingCartComponent,
+    LoginpageComponent,
+    SignuppageComponent,
+    ConfirmsignupComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     CarouselModule,
     BrowserModule,
-    RouterModuleRoutingModule
+    RouterModuleRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxWebstorageModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
