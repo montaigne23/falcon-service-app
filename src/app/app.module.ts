@@ -27,6 +27,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confirmsignup.component';
 import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
 import { SearchComponent } from './search/search.component';
+import { StatusAccountComponent } from './account/status-account/status-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { SearchComponent } from './search/search.component';
     ConfirmsignupComponent,
     ForgotpasswordComponent,
     SearchComponent,
+    StatusAccountComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -84,26 +84,13 @@
                             <i class="fas fa-heart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle"
                                 style="padding-bottom: 2px;">{{this._TestserviceService.totalData}}</span>
-                        </a>
+                        </a>  
                         <a routerLink="/shopping-cart" class="btn px-0 ml-3">
                             <i class="fas fa-shopping-cart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle"
                                 style="padding-bottom: 2px;">{{this._TestserviceService.totalData1}}</span>
                         </a>
-                        <div class="dropdown btn px-0 ml-4" style="height: 50px; width: 40px; border: none; background-color: none;">
-                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <img src="assets/image/logo_user.png" alt="Profile Picture" class="rounded-circle" width="35">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <span class="dropdown-item">Fokou Montaigne</span>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Profile</a>
-                              <a class="dropdown-item" href="#">Settings</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </div>
-                    </div>
+                        <app-status-account></app-status-account>                    </div>
                 </div>
             </nav>
         </div>
