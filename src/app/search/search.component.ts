@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SearchComponent {
   searchTerm: string = '';
-  products1:any
+  products1:any[]
   products = [
-    { name: 'Produit 1', image: 'https://via.placeholder.com/50' },
+    { name: 'Produit 1', image: 'assets/image/camera-1.jpg' },
     { name: 'Produit 2', image: 'https://via.placeholder.com/50' },
     { name: 'Produit 3', image: 'https://via.placeholder.com/50' },
     { name: 'Produit 4', image: 'https://via.placeholder.com/50' },
@@ -23,10 +23,16 @@ export class SearchComponent {
     return this.products.filter(product => product.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
   }
   
-  onSearchInput() {
+  onSearchInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (this.searchTerm.trim() === '') {
+      input.value = ''
+      this.searchTerm = '';
+    }
     console.log(this.searchTerm);
-    
-   this.products1 = this.products.filter(product => product.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    if ( this.searchTerm.trim() != "") { 
+      this.products1 = this.products.filter(product => product.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    }
     // this.products = [
     //   { name: 'Produit 1Produit 1Produit 1Produit 1', image: 'https://via.placeholder.com/50' },
     //   { name: 'Produit 2', image: 'https://via.placeholder.com/50' },

@@ -1,7 +1,7 @@
 
     <form action="">
         <div class="input-group">
-    <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" (input)="onSearchInput()" placeholder="Search for products">
+    <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" (input)="onSearchInput($event)" placeholder="Search for products">
         <div class="input-group-append">
             <span class="input-group-text bg-transparent text-primary">
                 <i class="fa fa-search"></i>
@@ -9,9 +9,9 @@
         </div>
     </div>
 </form>
-<div *ngIf="isInputFocused" class="list-group dropdown-menu" style="max-width: 500px;min-width: 300px;">
+<div *ngIf='isInputFocused && this.searchTerm.trim() != ""' class="list-group dropdown-menu" style="max-width: 500px;min-width: 300px; padding-top: -5px;">
     <a *ngFor="let product of products1" href="#" class="list-group-item dropdown-item">
-      <img [src]="product.image" alt="{{ product.name }}" class="mr-3">
+      <img [src]="product.image" class="img-fluid mr-3" style="width: 80px; height: auto;" alt="{{ product.name }}" >
       {{ product.name }}
     </a>
-  </div>        
+</div>        
