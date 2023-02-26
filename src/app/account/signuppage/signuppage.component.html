@@ -39,6 +39,7 @@
               <div *ngIf="signupForm.controls['email'].errors?.['email']">L'adresse e-mail doit être valide.</div>
             </div>
           </div>
+          <br>
           <button type="submit" class="btn float-right btn-primary" [disabled]="signupForm.invalid">Suivant <i class="bi bi-arrow-right fs-5"></i></button>
         </form>
       </div>
@@ -48,3 +49,7 @@
   <app-confirmsignup></app-confirmsignup>
 </div>
   
+<br>
+<br>
+<br>
+<app-featured></app-featured>

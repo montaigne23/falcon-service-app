@@ -1,0 +1,17 @@
+
+    <form action="">
+        <div class="input-group">
+    <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" (input)="onSearchInput()" placeholder="Search for products">
+        <div class="input-group-append">
+            <span class="input-group-text bg-transparent text-primary">
+                <i class="fa fa-search"></i>
+            </span>
+        </div>
+    </div>
+</form>
+<div *ngIf="isInputFocused" class="list-group dropdown-menu" style="max-width: 500px;min-width: 300px;">
+    <a *ngFor="let product of products1" href="#" class="list-group-item dropdown-item">
+      <img [src]="product.image" alt="{{ product.name }}" class="mr-3">
+      {{ product.name }}
+    </a>
+  </div>        

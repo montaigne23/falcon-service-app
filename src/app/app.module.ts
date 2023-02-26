@@ -23,9 +23,10 @@ import { ShopProductStartComponent } from './shop-page/shop-product-start/shop-p
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginpageComponent } from './account/loginpage/loginpage.component';
 import { SignuppageComponent } from './account/signuppage/signuppage.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confirmsignup.component';
 import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword
     SignuppageComponent,
     ConfirmsignupComponent,
     ForgotpasswordComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -56,7 +58,8 @@ import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword
     RouterModuleRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
