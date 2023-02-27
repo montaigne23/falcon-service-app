@@ -36,7 +36,8 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/assets/lib/animate/animate.min.css",
-              "src/assets/scss/style.scss"
+              "src/assets/scss/style.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "src/assets/js/jquery-3.4.1.min.js",

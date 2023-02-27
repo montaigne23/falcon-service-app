@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
@@ -28,6 +30,7 @@ import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confi
 import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
 import { SearchComponent } from './search/search.component';
 import { StatusAccountComponent } from './account/status-account/status-account.component';
+import { LoadingModalComponent } from './loading-modal/loading-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +55,7 @@ import { StatusAccountComponent } from './account/status-account/status-account.
     ForgotpasswordComponent,
     SearchComponent,
     StatusAccountComponent,
+    LoadingModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -61,7 +65,8 @@ import { StatusAccountComponent } from './account/status-account/status-account.
     ReactiveFormsModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
