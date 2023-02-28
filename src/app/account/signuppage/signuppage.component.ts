@@ -15,10 +15,9 @@ export class SignuppageComponent {
 
   passwordMismatch = false; //controle la validité du mot de passe
   hidePassword = false; //controle la vue du mot de passe
-  currentIndex = 0; //premet de basculer entre la première page d'inscription et la deuxième page d'inscription
-  info_user : any //récupère les information de l'utilisateur venant du serveur, après qu'il est appuyé sur suivant
-  signupForm: FormGroup; //formulaire de la première page
+
   signupForm2: FormGroup;//formulaire de la deuxième page
+
   constructor(private formBuilder: FormBuilder,
     private AuthService:AuthService,
     private sessionStorage: SessionStorageService,
@@ -27,31 +26,24 @@ export class SignuppageComponent {
     ) {
      }
   
-  ngOnInit() {
 
-    /* initialisation du formulaire de la première page */
-    this.signupForm = this.formBuilder.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
-
-    /* Ici on vérifie qu'il ya pas une inscription encour et doit être achevé ou annuler
-    si tel est le cas on bascule directement sur la deuxième page d'inscription et on initialise 
-    le formulaire avec les informations encour de l'inscription dans le cas contraire on ne fait rien 
-    et la première page d'incription s'affiche */
-    if (localStorage.getItem("CreateInfoUser")) {
-      var t : any = localStorage.getItem("CreateInfoUser")
-      var data = JSON.parse(t)
-      if(data?.status===1){
-        this.currentIndex = data?.status
-      }
-      console.log(this.AuthService._info_user=data);
-    }
+     async ngOnInit() {
+      /* initialisation du formulaire de la deuxième page */
+      this.signupForm2 = this.formBuilder.group({
+      // nom: ["", Validators.required],
+      // prenom: ["", Validators.required],
+      nom_utilisateur: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      password: ['', [Validators.required,  Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,}$/)]],
+      confirmPassword: ['',[ Validators.required]],
+      // language: ['fr', Validators.required],
+  },
+  {
+    validators: this.passwordMatchValidator
+  });
 
   }
 
-  //cette fonction vérifie que les deux mots de passe sont identiques du mot de passse
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password');
     const confirmPassword = formGroup.get('confirmPassword');
@@ -62,44 +54,19 @@ export class SignuppageComponent {
       confirmPassword?.setErrors(null);
     }
   }
-
-  /* Cette fonction permet de passer de la première à la deuxième page d'incription */
-  async onSignup() {
-    /* ici on cree un nouveau utilisateur non confirmé et on recupère son token */
-    this.info_user = await this.AuthService.signup(
-       this.signupForm.value?.email,
-      this.signupForm.value?.nom,
-      this.signupForm.value?.prenom,
+  
+  async onSignupfinale() {
+    console.log(this.signupForm2.value);
+    await this.AuthService.signupfinal(
+      this.signupForm2.value?.password,
+      this.signupForm2.value?.email,
+      this.signupForm2.value?.nom_utilisateur,
     );
-    console.log(this.info_user);
-    console.log(this.info_user?.data.registrationToken);
-    
-    /*Ici on vérifie que l'utilisateur a bien été crée et on recupère ses informations
-    que on va ensuite initialiser dans le deuxième formulaire d'inscription et les stocké dans le localstorage
-     */
-    this.AuthService.getlinkaccessuser(this.info_user?.data.registrationToken).subscribe(data => {
-     let datas:any = data
-      this.AuthService._info_user.email = datas?.data.email;
-      this.AuthService._info_user.firstname = datas?.data.firstname;
-      this.AuthService._info_user.lastname = datas?.data.lastname;
-      this.AuthService._info_user.id = this.info_user?.data.id;
-      this.AuthService._info_user.registerToken = this.info_user?.data.registrationToken;
-      this.AuthService._info_user.status = 1;
-      console.log(this.AuthService._info_user );
-      this.currentIndex = 1;
-      localStorage.setItem('CreateInfoUser', JSON.stringify(this.AuthService._info_user)); // Stocke le token JWT dans un cookie nommé 'jwt'
-    });
   }
 
-  /* Ici on confirme l'utilisateur crée et on récupère ses information 
-  que on va ensuite stocké dans un cookie, puis on éfface du localstorage
-   les information de l'utilisateur précédemment ajouté lors de la vérification 
-   de l'utilisateur  */
 
-  /**
-   * cette fonction sert a annuler l'inscription
-   */
   annuler(){
-
+    // localStorage.removeItem('CreateInfoUser') //on vide ses information du localstorage
   }
+
 }

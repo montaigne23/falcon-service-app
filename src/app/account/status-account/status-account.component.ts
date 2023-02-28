@@ -30,7 +30,7 @@ export class StatusAccountComponent implements OnInit {
     if (this.IsUserInfo) {
       console.log(JSON.parse(this.IsUserInfo));
       
-      this.name = JSON.parse(this.IsUserInfo).firstname
+      this.name = JSON.parse(this.IsUserInfo).username
     }
     
   }

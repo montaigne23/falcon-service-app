@@ -24,8 +24,8 @@ export class LoginpageComponent {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      nom_utilisateur: ["", Validators.required],
+            password: ['', [Validators.required]]
     });
   }
 
@@ -39,8 +39,8 @@ export class LoginpageComponent {
 
   async onLogin() {
     this.IsOnLogin = true
-    console.log(this.loginForm.value?.email);
-    await  this.AuthService.login(this.loginForm.value?.email, this.loginForm.value?.password)
+    console.log(this.loginForm.value);
+    await  this.AuthService.login(this.loginForm.value?.nom_utilisateur, this.loginForm.value?.password)
     this.IsOnLogin = false
   }
 }

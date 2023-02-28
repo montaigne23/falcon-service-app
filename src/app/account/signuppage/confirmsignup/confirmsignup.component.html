@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <h2>S'inscrire</h2>
       <form [formGroup]="signupForm2" (ngSubmit)="onSignupfinale()">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="nom">Nom</label>
           <input formControlName="nom" class="form-control" id="nom" placeholder="Entrez votre nom" readonly>
           <div *ngIf="signupForm2.controls['nom'].invalid && (signupForm2.controls['nom'].dirty || signupForm2.controls['nom'].touched)" class="text-danger">
@@ -16,10 +16,10 @@
           <div *ngIf="signupForm2.controls['prenom'].invalid && (signupForm2.controls['prenom'].dirty || signupForm2.controls['prenom'].touched)" class="text-danger">
               <div *ngIf="signupForm2.controls['prenom'].errors?.['required']">Le nom est requis.</div>
             </div>
-       </div>
+       </div> -->
     <div class="form-group">
       <label for="email">Adresse e-mail</label>
-      <input formControlName="email" type="email" class="form-control" id="email" placeholder="Entrez votre adresse e-mail" readonly>
+      <input formControlName="email" type="email" class="form-control" id="email" placeholder="Entrez votre adresse e-mail">
       <div *ngIf="signupForm2.controls['email'].invalid && (signupForm2.controls['email'].dirty || signupForm2.controls['email'].touched)" class="text-danger">
         <div *ngIf="signupForm2.controls['email'].errors?.['required']">L'adresse e-mail est requise.</div>
         <div *ngIf="signupForm2.controls['email'].errors?.['email']">L'adresse e-mail doit être valide.</div>
