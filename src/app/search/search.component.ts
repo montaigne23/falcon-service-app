@@ -20,7 +20,7 @@ export class SearchComponent {
 
 
   get searchResults() {
-    return this.products.filter(product => product.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    return this.products.filter(product => product.name.toLowerCase().includes(this.searchTerm.toLowerCase()), );
   }
   
   onSearchInput(event: Event) {
