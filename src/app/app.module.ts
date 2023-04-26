@@ -83,7 +83,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     //   useClass: AppInterceptor,
     //   multi: true
     // },
-    {provide: LocationStrategy, useClass:HashLocationStrategy},
+   // {provide: LocationStrategy, useClass:HashLocationStrategy},
     AuthService,
     AppInterceptor,
     WoocommerceProductsService,
