@@ -36,6 +36,7 @@ import { WoocommerceProductsService } from './services/products/woocommerce-prod
 import { AuthService } from './services/auth/auth.service';
 import { WoocommerceHelperService } from './services/helper.service';
 import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 //import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
 
 @NgModule({
@@ -82,6 +83,7 @@ import { WoocommerceCategoriesService } from './services/categories/woocommerce-
     //   useClass: AppInterceptor,
     //   multi: true
     // },
+    {provide: LocationStrategy, useClass:HashLocationStrategy},
     AuthService,
     AppInterceptor,
     WoocommerceProductsService,
