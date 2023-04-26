@@ -1,5 +1,8 @@
-import { Component, Output, EventEmitter, Input,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Product, ProductOrder, ProductOrderBy, ProductQuery, RetrieveProductsResponse } from 'src/app/services/products/product.interface';
+import { WoocommerceProductsService } from 'src/app/services/products/woocommerce-products.service';
 import { TestserviceService } from 'src/app/services/testservice.service';
+
 
 @Component({
   selector: 'app-products',
@@ -9,22 +12,31 @@ import { TestserviceService } from 'src/app/services/testservice.service';
 
 
 export class ProductsComponent implements OnInit{
-
-  @Output() outputexemple: EventEmitter<any> = new EventEmitter()
-
-  constructor(public _TestserviceService : TestserviceService){
-
+  retrieveProductsResponse : RetrieveProductsResponse
+  products?: Product[] = [];
+  currentPage?: number = 1;
+  numbers: number[] = [1, 2, 3, 4, 5, 6];
+  loadingProduct:boolean = true;
+  productOrder: ProductOrder = ProductOrder.desc
+  
+  productQuery:ProductQuery= {
+    page:1,
+    per_page:9,
+    order: this.productOrder
   }
-  sendData(){
-    this._TestserviceService.totalData++;
-    // this.outputexemple.emit(1.5)
-  }
-  sendData1(){
-    this._TestserviceService.totalData1++;
-    // this.outputexemple.emit(1.5)
-  }
-
+  constructor(public _TestserviceService : TestserviceService,
+      private wooProducs: WoocommerceProductsService,
+  ){} 
+  
   ngOnInit(){
+    this.currentPage = 1
+  this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
+  this.retrieveProductsResponse = response
+  this.products = this.retrieveProductsResponse.products
+  this.loadingProduct = false;
+  }, err => { 
+    console.log(err);
+  });
   }
-
+  
 }

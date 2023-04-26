@@ -1,7 +1,7 @@
-<div class="container-fluid bg-dark mb-30 sticky-top" style="z-index: 10;">
+<div class="container-fluid bg-dark mb-30 sticky-top" style="z-index: 10; height: 50px;">
     <div class="row px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
-            <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse"
+            <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" style="height: 50px;" data-toggle="collapse"
                 href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
                 <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
                 <i class="fa fa-angle-down text-dark"></i>
@@ -21,14 +21,7 @@
                     <ng-container *ngFor="let item of productscategorie">
                         <a href="" class="nav-item nav-link">{{item.name}}</a>
                     </ng-container>
-                    <!-- <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a> -->
+                   
                 </div>
             </nav>
         </div>
@@ -64,9 +57,7 @@
                     </button>
                 </div>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-
-                    <div class="navbar-nav mr-auto py-0">
-
+                    <div class="navbar-nav mr-auto py-0" >
                         <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
                         <a class="nav-item nav-link" routerLink="/shop" routerLinkActive="active">Shop</a>
                         <div class="nav-item dropdown">
