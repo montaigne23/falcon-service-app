@@ -63,11 +63,20 @@ export interface Product {
   grouped_products?: Array<string>;
   menu_order?: number;
   meta_data?: Array<any>;
+  images:Array<any>;
 }
 
 export interface RetrieveProductsResponse {
   products?: Product[];
-  headers?: Array<any>;
+  headers?: headers;
+}
+export interface headers {
+  cacheControl: string;
+  contentType: string;
+  expires: string;
+  link: string;
+  "x-wp-total": string;
+ "x-wp-totalpages": string;
 }
 
 

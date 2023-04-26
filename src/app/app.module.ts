@@ -33,8 +33,10 @@ import { StatusAccountComponent } from './account/status-account/status-account.
 import { LoadingModalComponent } from './loading-modal/loading-modal.component';
 import { AppInterceptor } from './appIntercetor';
 import { WoocommerceProductsService } from './services/products/woocommerce-products.service';
-import { WoocommerceHelperService } from './services/helper.service';
 import { AuthService } from './services/auth/auth.service';
+import { WoocommerceHelperService } from './services/helper.service';
+import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
+//import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,8 @@ import { AuthService } from './services/auth/auth.service';
     AuthService,
     AppInterceptor,
     WoocommerceProductsService,
-    WoocommerceHelperService
+    WoocommerceHelperService,
+    WoocommerceCategoriesService,
   ],
   bootstrap: [AppComponent]
 })
