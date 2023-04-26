@@ -29,8 +29,8 @@ export class AuthService {
   };
   constructor(
     private http: HttpClient,
+    private sessionStorage: SessionStorageService,
      private cookieService: CookieService,
-     private sessionStorage: SessionStorageService,
      private toastr: ToastrService,
      private router : Router,
      ) {}

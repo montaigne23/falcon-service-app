@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -31,6 +31,13 @@ import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword
 import { SearchComponent } from './search/search.component';
 import { StatusAccountComponent } from './account/status-account/status-account.component';
 import { LoadingModalComponent } from './loading-modal/loading-modal.component';
+import { AppInterceptor } from './appIntercetor';
+import { WoocommerceProductsService } from './services/products/woocommerce-products.service';
+import { AuthService } from './services/auth/auth.service';
+import { WoocommerceHelperService } from './services/helper.service';
+import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
+//import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,9 +73,21 @@ import { LoadingModalComponent } from './loading-modal/loading-modal.component';
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AppInterceptor,
+    //   multi: true
+    // },
+    AuthService,
+    AppInterceptor,
+    WoocommerceProductsService,
+    WoocommerceHelperService,
+    WoocommerceCategoriesService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

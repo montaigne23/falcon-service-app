@@ -1,5 +1,6 @@
 <div class="dropdown btn px-0 ml-4" style="height: 50px; width: 40px; border: none; background-color: none;">
-    <a id="navbarDropdown" (click)="this.getInfo()" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a id="navbarDropdown" (click)="this.getInfo()" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
         <img src="assets/image/logo_user.png" alt="Profile Picture" class="rounded-circle" width="35">
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -10,11 +11,11 @@
         </ng-container>
         <ng-container *ngIf="this.IsUserInfo && this.IsToken">
             <span class="dropdown-item">{{this.name}}</span>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" >Profile</a>
-                <a class="dropdown-item">Settings</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="this.logout()" >Logout</a>
-            </ng-container>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item">Profile</a>
+            <a class="dropdown-item">Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="this.logout()">Logout</a>
+        </ng-container>
     </div>
 </div>

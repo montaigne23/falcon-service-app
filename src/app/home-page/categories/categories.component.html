@@ -1,161 +1,20 @@
 <div class="container-fluid pt-5">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
     <div class="row px-xl-5 pb-3">
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/cat-1.jpg" alt="">
+        <ng-container *ngFor="let item of productscategorie">
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" [src]="item.image?.src" [title]="item.image?.title" [alt]="item.image?.title">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>{{item.name}}</h6>
+                            <small class="text-body">{{item.count}} In Stock</small>
+                        </div>
                     </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Disjoncteurs Compacts</h6>
-                        <small class="text-body"> In Stock</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/G-NXBLE-32-2P-C32-300mA-6kAR.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Disjoncteurs Différentiels</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/disjoncteur-dpn.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Disjoncteurs DPN</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/nxc-ac-contactor-3.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Contacteurs</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/contacteur-compact.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Contacteurs Compacts</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/inverseur.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Inverseurs motorisés</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/variateur-de-vitesse.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Variateurs de Vitesses</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/dahua-hac-hfw1200tp-camera-analogique.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Cameras Analogiques</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/ds-2cd1041-i_d.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Cameras IP</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/nvr.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>NVR</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/dvr.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>DVR</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img class="img-fluid" src="assets/image/ds-3e0106hp-e_d.jpg" alt="">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Switchs</h6>
-                        <small class="text-body">100 Products</small>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        </ng-container>
     </div>
 </div>
