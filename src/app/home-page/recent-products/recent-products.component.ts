@@ -12,7 +12,6 @@ export class RecentProductsComponent implements OnInit {
 
   retrieveProductsResponse : RetrieveProductsResponse
   products?: Product[] = [];
-  currentPage?: number = 1;
   numbers: number[] = [1, 2, 3, 4, 5, 6];
   loadingProduct:boolean = true;
   productOrder: ProductOrder = ProductOrder.desc
@@ -20,17 +19,18 @@ export class RecentProductsComponent implements OnInit {
   productQuery:ProductQuery= {
     page:1,
     per_page:9,
-    order: this.productOrder
-  }
+    order: this.productOrder,
+   // category:"38"
+    }
   constructor(public _TestserviceService : TestserviceService,
       private wooProducs: WoocommerceProductsService,
   ){} 
 
   ngOnInit(){
-    this.currentPage = 1
   this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
   this.retrieveProductsResponse = response
   this.products = this.retrieveProductsResponse.products
+  this.products? console.log(this.products[3]?.categories): null;
   this.loadingProduct = false;
   }, err => { 
     console.log(err);
