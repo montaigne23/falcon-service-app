@@ -43,7 +43,7 @@ export class ShopProductStartComponent implements OnInit {
       }
     }, err => {
       console.log(err);
-    });
+    }); 
   }
 
   getMorePage(value: number) {
