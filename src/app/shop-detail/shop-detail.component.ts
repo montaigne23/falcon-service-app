@@ -168,6 +168,8 @@ export class ShopDetailComponent implements OnInit {
       this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
         this.retrieveProductsResponse = response
         this.products = this.retrieveProductsResponse.products
+        console.log(this.product);
+        
         this.loadingProduct = false;
       }, err => {
         console.log(err);

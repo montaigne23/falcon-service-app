@@ -5,7 +5,8 @@
             <nav class="breadcrumb bg-light mb-30">
                 <a class="breadcrumb-item text-dark" routerLink="/home">Home</a>
                 <a class="breadcrumb-item text-dark" routerLink="/shop">Shop</a>
-                <span class="breadcrumb-item active">Shop Detail</span>
+                <a *ngIf="product.categories != undefined" class="breadcrumb-item text-dark" routerLink="/shop">{{product.categories[0].name}}</a>
+                <span class="breadcrumb-item active">{{slug||""}}</span>
             </nav>
         </div>
     </div>
