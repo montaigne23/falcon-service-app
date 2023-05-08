@@ -22,7 +22,8 @@ export class ProductsComponent implements OnInit {
   productQuery: ProductQuery = {
     page: 1,
     per_page: 9,
-    order: this.productOrder
+    order: this.productOrder,
+    category: null
   }
   constructor(public _TestserviceService: TestserviceService,
     private wooProducs: WoocommerceProductsService,

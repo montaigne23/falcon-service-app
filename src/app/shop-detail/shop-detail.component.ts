@@ -138,10 +138,12 @@ export class ShopDetailComponent implements OnInit {
     per_page: 9,
     order: this.productOrder,
     include: [245, 18],
-    // category:"38"
+    category: ""
   }
   productQuery: ProductQuery = {
-    slug: ""    // category:"38"
+    slug: "" // category:"38"
+    ,
+    category: ""
   }
   constructor(private route: ActivatedRoute,
     public _TestserviceService: TestserviceService,
@@ -152,9 +154,11 @@ export class ShopDetailComponent implements OnInit {
     window.scroll(0, 0)
   }
   
-  async ngOnInit(): Promise<void> {
+  async ngOnInit(): Promise<void>  {
     this.loadingProduct = true;
     this.slug = this.route.snapshot.paramMap.get('id');
+   // console.log(this.slug);
+    
     this.productQuery.slug = this.slug
     await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
       this.retrieveProductsResponse = response
@@ -163,7 +167,7 @@ export class ShopDetailComponent implements OnInit {
       }
       this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
       this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
-      this.products ? console.log(this.product) : null;
+      // this.products ? console.log(this.product) : null;
       this.productsQuery.include = this.product.upsell_ids
       this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
         this.retrieveProductsResponse = response
@@ -226,33 +230,37 @@ export class ShopDetailComponent implements OnInit {
       this.quantity -= 1
     }
   }
-  async goProduct(tagname: string): Promise<void> {
+  async goProduct(tagname: string, id:string): Promise<void> {
     // console.log(tagname);
     window.scroll(0, 0)
     this.loadingProduct  = true
     this.router.navigate(
-      ['/shop', tagname])
-    this.slug = this.route.snapshot.paramMap.get('id');
-    this.productQuery.slug = this.slug
-    await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
-      this.retrieveProductsResponse = response
-      if (this.retrieveProductsResponse.products != undefined) {
-        this.product = this.retrieveProductsResponse.products[0]
-      }
-      this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
-      this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
-      this.products ? console.log(this.product) : null;
-      this.productsQuery.include = this.product.upsell_ids
-      this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
-        this.retrieveProductsResponse = response
-        this.products = this.retrieveProductsResponse.products
-        this.loadingProduct = false;
-      }, err => {
-        console.log(err);
-      });
-    }, err => {
-      console.log(err);
-    });
+      ['/shop',id, tagname])
+      this.slug = tagname;
+      // console.log(this.slug);
+       
+       this.productQuery.slug = this.slug
+       await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
+         this.retrieveProductsResponse = response
+         if (this.retrieveProductsResponse.products != undefined) {
+           this.product = this.retrieveProductsResponse.products[0]
+         }
+         this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
+         this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
+         // this.products ? console.log(this.product) : null;
+         this.productsQuery.include = this.product.upsell_ids
+         this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
+           this.retrieveProductsResponse = response
+           this.products = this.retrieveProductsResponse.products
+           console.log(this.product);
+           
+           this.loadingProduct = false;
+         }, err => {
+           console.log(err);
+         });
+       }, err => {
+         console.log(err);
+       });
 
 
   }

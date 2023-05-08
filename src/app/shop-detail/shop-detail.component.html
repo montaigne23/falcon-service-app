@@ -4,8 +4,9 @@
         <div class="col-12">
             <nav class="breadcrumb bg-light mb-30">
                 <a class="breadcrumb-item text-dark" routerLink="/home">Home</a>
-                <a class="breadcrumb-item text-dark" routerLink="/shop">Shop</a>
-                <a *ngIf="product.categories != undefined" class="breadcrumb-item text-dark" routerLink="/shop">{{product.categories[0].name}}</a>
+                <a class="breadcrumb-item text-dark" [routerLink]="['/shop']">Shop</a>
+                <a *ngIf="product.categories != undefined" class="breadcrumb-item text-dark"
+                [routerLink]="['/shop', product.categories[0].id]">{{product.categories[0].name}}</a>
                 <span class="breadcrumb-item active">{{slug||""}}</span>
             </nav>
         </div>
@@ -211,12 +212,13 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <ng-container *ngIf="item.slug != undefined; else elseNoSlug">
-                                    <a class="h6 text-decoration-none text-truncate"
-                                        (click)="goProduct(item.slug)">{{item.name}}</a>
+                                <ng-container *ngIf="item.slug != undefined ; else elseNoSlug">
+                                    <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                                        (click)="goProduct(item.slug, item.categories[0].id)">{{item.name}}</a>
                                 </ng-container>
                                 <ng-template #elseNoSlug>
-                                    <a class="h6 text-decoration-none text-truncate">{{item.name}}</a>
+                                    <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                                        [routerLink]="['/shop', item.categories[0].id, item.slug]">{{item.name}}</a>
                                 </ng-template>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>{{item.sale_price}}</h5>

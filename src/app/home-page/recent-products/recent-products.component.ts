@@ -17,11 +17,11 @@ export class RecentProductsComponent implements OnInit {
   productOrder: ProductOrder = ProductOrder.desc
   
   productQuery:ProductQuery= {
-    page:1,
-    per_page:9,
+    page: 1,
+    per_page: 9,
     order: this.productOrder,
-   // category:"38"
-    }
+    category: null
+  }
   constructor(public _TestserviceService : TestserviceService,
       private wooProducs: WoocommerceProductsService,
   ){} 

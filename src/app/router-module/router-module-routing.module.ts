@@ -10,8 +10,9 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 const routes: Routes = [
   { path: "",  redirectTo: "home",  pathMatch: "full" },
   { path: "home",   component: HomePageComponent},
+  {path:"shop/:category", component: ShopPageComponent},
   {path:"shop", component: ShopPageComponent},
-{path: "shop/:id", component: ShopDetailComponent},
+{path: "shop/:category/:id", component: ShopDetailComponent},
 {path: "shopping-cart", component: ShoppingCartComponent},
 {path:'account/login', component: LoginpageComponent},
 {path:'account/signup', component: SignuppageComponent} 

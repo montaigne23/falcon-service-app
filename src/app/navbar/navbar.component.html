@@ -19,7 +19,7 @@
                         </div>
                     </div> -->
                     <ng-container *ngFor="let item of productscategorie">
-                        <a href="" class="nav-item nav-link">{{item.name}}</a>
+                        <a [routerLink]="['/shop', item.id]" class="nav-item nav-link">{{item.name}}</a>
                     </ng-container>
                 </div>
             </nav>
@@ -58,7 +58,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-                        <a class="nav-item nav-link" routerLink="/shop" routerLinkActive="active">Shop</a>
+                        <a class="nav-item nav-link" [routerLink]="['/shop', '']" routerLinkActive="active">Shop</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i
                                     class="fa fa-angle-down mt-1"></i></a>

@@ -111,7 +111,7 @@ export interface ProductQuery {
   type?: string;
   sku?: string;
   featured?: boolean;
-  category?: string;
+  category: string|null;
   tag?: string;
   shipping_class?: string;
   attribute?: string;
