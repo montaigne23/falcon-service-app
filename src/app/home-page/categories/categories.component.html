@@ -4,7 +4,7 @@
     <div class="row px-xl-5 pb-3">
         <ng-container *ngIf="!loadingcategorie">
             <div *ngFor="let item of productscategorie" class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" >
+                <a *ngIf="item.id" [routerLink]="['/shop', item.id]" class="text-decoration-none" >
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" [src]="item.image?.src" [title]="item.image?.title"
