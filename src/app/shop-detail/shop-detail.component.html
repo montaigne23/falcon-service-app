@@ -20,9 +20,13 @@
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner bg-light">
                     <ng-container *ngFor="let el of product.images; let i = index">
-                        <div [ngClass]="'carousel-item' "  [class.active]="i === activeIndex">
-                            <img class="w-100 h-100" [src]="el.src" alt="Image">
-                            <img class="w-100 h-100" src="asset/loadingAsset/apploading.gif" alt="Image">
+                        <div [ngClass]="'carousel-item' " [class.active]="i === activeIndex">
+                            <ng-container *ngIf="loadingProduct; else elseImage">
+                                <img class="w-100 h-100" src="assets/loadingAsset/apploading.gif" alt="Image">
+                            </ng-container>
+                            <ng-template #elseImage>
+                                <img class="w-100 h-100" [src]="el.src" alt="Image">
+                            </ng-template>
                         </div>
                     </ng-container>
                 </div>
@@ -34,73 +38,78 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-7 h-auto mb-30">
-            <div class="h-100 bg-light p-30">
-                <div class="skeleton-line title animate"></div>
-                <div class="skeleton-line rating animate"></div>
-                <div class="skeleton-line price animate"></div>
-                <div class="skeleton-line description animate"></div>
-                <div class="skeleton-line quantity-btn animate"></div>
-                <div class="skeleton-line add-to-cart-btn animate"></div>
-                <div class="skeleton-line share-icons animate"></div>
-            </div>
-        </div>
-        
-        <!-- <div class="col-lg-7 h-auto mb-30">
-            <div class="h-100 bg-light p-30">
-                <h3>{{product.name}}</h3>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
-                    </div>
-                    <small class="pt-1">(99 Reviews)</small>
+        <ng-container *ngIf="loadingProduct; else elseDescription ">
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+                    <div class="skeleton-line title animate"></div>
+                    <div class="skeleton-line rating animate"></div>
+                    <div class="skeleton-line price animate"></div>
+                    <div class="skeleton-line description animate"></div>
+                    <div class="skeleton-line quantity-btn animate"></div>
+                    <div class="skeleton-line add-to-cart-btn animate"></div>
+                    <div class="skeleton-line share-icons animate"></div>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4">{{product.regular_price}} FCFA</h3>
-                <div class="mb-4" [innerHTML]="ShortDescriptioncontent">
+            </div>
+        </ng-container>
 
-                </div>
-                <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button (click)="this.minus()" class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
+        <ng-template #elseDescription>
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+                    <h3>{{product.name}}</h3>
+                    <div class="d-flex mb-3">
+                        <div class="text-primary mr-2">
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star-half-alt"></small>
+                            <small class="far fa-star"></small>
                         </div>
-                        <input type="text" class="form-control bg-secondary border-0 text-center"
-                            [value]="this.quantity">
-                        <div class="input-group-btn">
-                            <button (click)="this.plus()" class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
+                        <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <button class="btn btn-primary px-3" (click)="this.addtocard()"><i
-                            class="fa fa-shopping-cart mr-1"></i> Add To
-                        Cart</button>
-                </div>
-                <div class="d-flex pt-2">
-                    <strong class="text-dark mr-2">Share on:</strong>
-                    <div class="d-inline-flex">
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-pinterest"></i>
-                        </a>
+                    <h3 class="font-weight-semi-bold mb-4">{{product.regular_price}} FCFA</h3>
+                    <div class="mb-4" [innerHTML]="ShortDescriptioncontent">
+
+                    </div>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 130px;">
+                            <div class="input-group-btn">
+                                <button (click)="this.minus()" class="btn btn-primary btn-minus">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control bg-secondary border-0 text-center"
+                                [value]="this.quantity">
+                            <div class="input-group-btn">
+                                <button (click)="this.plus()" class="btn btn-primary btn-plus">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary px-3" (click)="this.addtocard()"><i
+                                class="fa fa-shopping-cart mr-1"></i> Add To
+                            Cart</button>
+                    </div>
+                    <div class="d-flex pt-2">
+                        <strong class="text-dark mr-2">Share on:</strong>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </ng-template>
+
     </div>
     <div class="row px-xl-5">
         <div class="col">
@@ -201,13 +210,12 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <ng-container *ngIf="item.slug != undefined; else elseNoSlug" >
+                                <ng-container *ngIf="item.slug != undefined; else elseNoSlug">
                                     <a class="h6 text-decoration-none text-truncate"
-                                    (click)="goProduct(item.slug)" >{{item.name}}</a>
+                                        (click)="goProduct(item.slug)">{{item.name}}</a>
                                 </ng-container>
                                 <ng-template #elseNoSlug>
-                                    <a class="h6 text-decoration-none text-truncate"
-                                     >{{item.name}}</a>
+                                    <a class="h6 text-decoration-none text-truncate">{{item.name}}</a>
                                 </ng-template>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>{{item.sale_price}}</h5>

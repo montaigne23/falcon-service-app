@@ -125,6 +125,7 @@ export class ShopDetailComponent implements OnInit {
       }
     ]
   };
+  isLoading: boolean = false;
   activeIndex = 0;
   currentPage?: number = 1;
   numbers: number[] = [1, 2, 3, 4, 5, 6];
@@ -152,6 +153,7 @@ export class ShopDetailComponent implements OnInit {
   }
   
   async ngOnInit(): Promise<void> {
+    this.loadingProduct = true;
     this.slug = this.route.snapshot.paramMap.get('id');
     this.productQuery.slug = this.slug
     await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
@@ -162,7 +164,6 @@ export class ShopDetailComponent implements OnInit {
       this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
       this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
       this.products ? console.log(this.product) : null;
-      this.loadingProduct = false;
       this.productsQuery.include = this.product.upsell_ids
       this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
         this.retrieveProductsResponse = response
@@ -226,6 +227,7 @@ export class ShopDetailComponent implements OnInit {
   async goProduct(tagname: string): Promise<void> {
     // console.log(tagname);
     window.scroll(0, 0)
+    this.loadingProduct  = true
     this.router.navigate(
       ['/shop', tagname])
     this.slug = this.route.snapshot.paramMap.get('id');
@@ -238,7 +240,6 @@ export class ShopDetailComponent implements OnInit {
       this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
       this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
       this.products ? console.log(this.product) : null;
-      this.loadingProduct = false;
       this.productsQuery.include = this.product.upsell_ids
       this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
         this.retrieveProductsResponse = response
