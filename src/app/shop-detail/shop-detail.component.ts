@@ -150,7 +150,7 @@ export class ShopDetailComponent implements OnInit {
   ) {
     window.scroll(0, 0)
   }
-
+  
   async ngOnInit(): Promise<void> {
     this.slug = this.route.snapshot.paramMap.get('id');
     this.productQuery.slug = this.slug
