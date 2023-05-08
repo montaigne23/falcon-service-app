@@ -223,11 +223,35 @@ export class ShopDetailComponent implements OnInit {
       this.quantity -= 1
     }
   }
-  goProduct(tagname: string) {
+  async goProduct(tagname: string): Promise<void> {
     // console.log(tagname);
     window.scroll(0, 0)
     this.router.navigate(
       ['/shop', tagname])
+    this.slug = this.route.snapshot.paramMap.get('id');
+    this.productQuery.slug = this.slug
+    await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
+      this.retrieveProductsResponse = response
+      if (this.retrieveProductsResponse.products != undefined) {
+        this.product = this.retrieveProductsResponse.products[0]
+      }
+      this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
+      this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
+      this.products ? console.log(this.product) : null;
+      this.loadingProduct = false;
+      this.productsQuery.include = this.product.upsell_ids
+      this.wooProducs.retrieveProducts(this.productsQuery).subscribe(response => {
+        this.retrieveProductsResponse = response
+        this.products = this.retrieveProductsResponse.products
+        this.loadingProduct = false;
+      }, err => {
+        console.log(err);
+      });
+    }, err => {
+      console.log(err);
+    });
+
+
   }
   nextImage() {
     if (this.activeIndex < this.product.images.length - 1) {
@@ -236,7 +260,7 @@ export class ShopDetailComponent implements OnInit {
       this.activeIndex = 0;
     }
   }
-  
+
   prevImage() {
     if (this.activeIndex > 0) {
       this.activeIndex--;
@@ -244,5 +268,5 @@ export class ShopDetailComponent implements OnInit {
       this.activeIndex = this.product.images.length - 1;
     }
   }
-  
+
 }

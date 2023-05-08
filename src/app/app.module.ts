@@ -25,7 +25,7 @@ import { ShopProductStartComponent } from './shop-page/shop-product-start/shop-p
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginpageComponent } from './account/loginpage/loginpage.component';
 import { SignuppageComponent } from './account/signuppage/signuppage.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confirmsignup.component';
 import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
 import { SearchComponent } from './search/search.component';
@@ -75,7 +75,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NgxWebstorageModule.forRoot(),
     FormsModule,
     ToastrModule.forRoot(),
-    
+
   ],
   providers: [
     // {
@@ -83,7 +83,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     //   useClass: AppInterceptor,
     //   multi: true
     // },
-   // {provide: LocationStrategy, useClass:HashLocationStrategy},
+    // {provide: LocationStrategy, useClass:HashLocationStrategy},
     AuthService,
     AppInterceptor,
     WoocommerceProductsService,

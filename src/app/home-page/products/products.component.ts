@@ -11,32 +11,32 @@ import { TestserviceService } from 'src/app/services/testservice.service';
 })
 
 
-export class ProductsComponent implements OnInit{
-  retrieveProductsResponse : RetrieveProductsResponse
+export class ProductsComponent implements OnInit {
+  retrieveProductsResponse: RetrieveProductsResponse
   products?: Product[] = [];
   currentPage?: number = 1;
   numbers: number[] = [1, 2, 3, 4, 5, 6];
-  loadingProduct:boolean = true;
+  loadingProduct: boolean = true;
   productOrder: ProductOrder = ProductOrder.desc
-  
-  productQuery:ProductQuery= {
-    page:1,
-    per_page:9,
+
+  productQuery: ProductQuery = {
+    page: 1,
+    per_page: 9,
     order: this.productOrder
   }
-  constructor(public _TestserviceService : TestserviceService,
-      private wooProducs: WoocommerceProductsService,
-  ){} 
-  
-  ngOnInit(){
+  constructor(public _TestserviceService: TestserviceService,
+    private wooProducs: WoocommerceProductsService,
+  ) { }
+
+  ngOnInit() {
     this.currentPage = 1
-  this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
-  this.retrieveProductsResponse = response
-  this.products = this.retrieveProductsResponse.products
-  this.loadingProduct = false;
-  }, err => { 
-    console.log(err);
-  });
+    this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
+      this.retrieveProductsResponse = response
+      this.products = this.retrieveProductsResponse.products
+      this.loadingProduct = false;
+    }, err => {
+      console.log(err);
+    });
   }
-  
+
 }

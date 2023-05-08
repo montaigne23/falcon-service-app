@@ -34,8 +34,19 @@
                 </a>
             </div>
         </div>
-
         <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <div class="skeleton-line title animate"></div>
+                <div class="skeleton-line rating animate"></div>
+                <div class="skeleton-line price animate"></div>
+                <div class="skeleton-line description animate"></div>
+                <div class="skeleton-line quantity-btn animate"></div>
+                <div class="skeleton-line add-to-cart-btn animate"></div>
+                <div class="skeleton-line share-icons animate"></div>
+            </div>
+        </div>
+        
+        <!-- <div class="col-lg-7 h-auto mb-30">
             <div class="h-100 bg-light p-30">
                 <h3>{{product.name}}</h3>
                 <div class="d-flex mb-3">
@@ -89,7 +100,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row px-xl-5">
         <div class="col">
@@ -190,8 +201,14 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate"
-                                    [routerLink]="['/shop', item.slug]">{{item.name}}</a>
+                                <ng-container *ngIf="item.slug != undefined; else elseNoSlug" >
+                                    <a class="h6 text-decoration-none text-truncate"
+                                    (click)="goProduct(item.slug)" >{{item.name}}</a>
+                                </ng-container>
+                                <ng-template #elseNoSlug>
+                                    <a class="h6 text-decoration-none text-truncate"
+                                     >{{item.name}}</a>
+                                </ng-template>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>{{item.sale_price}}</h5>
                                     <h6 class="text-muted ml-2"><del>{{item.regular_price}}</del></h6>
