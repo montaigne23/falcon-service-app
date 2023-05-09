@@ -31,52 +31,19 @@ export class ShopProductStartComponent implements OnInit {
     private wooProducs: WoocommerceProductsService,
     private router: Router,
     private route: ActivatedRoute,
-    private shopServiceService:ShopServiceService
-  ) { }
+    public shopServiceService:ShopServiceService
+  ) { 
+    console.log("ok");
+    
+  }
 
   ngOnInit():void {
-    this.slug = this.route.snapshot.paramMap.get('category');
-    this.productQuery.category = this.slug || ""
-    this.currentPage = 1
-    this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
-      this.retrieveProductsResponse = response
-      this.products = this.retrieveProductsResponse.products
-     // this.products? this.products[0].categories ? this.shopServiceService.activeCategory = this.products[0].categories[0].name : null : null
-      this.loadingProduct = false;
-      if (response.headers) {
-        this.totalPage = Number(response.headers["x-wp-totalpages"])
-        this.totalcount = Number(response.headers["x-wp-total"])
-        console.log(this.totalPage);
-        console.log(this.totalcount);
-      } else {
-        console.log('La propriété "headers" ou l\'en-tête "x-wp-totalpages" n\'est pas définie.');
-      }
-    }, err => {
-      console.log(err);
-    }); 
+    this.shopServiceService.getProduct(this.route.snapshot.paramMap.get('category')||"")
   }
 
-  getMorePage(value: number) {
-    this.loadingProduct = true;
-    this.productQuery.page = value
-    this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
-      this.retrieveProductsResponse = response
-      this.products = this.retrieveProductsResponse.products
-      this.currentPage = value;
-      this.loadingProduct = false;
-
-      if (response.headers) {
-        this.totalPage = Number(response.headers["x-wp-totalpages"])
-        this.totalcount = Number(response.headers["x-wp-total"])
-        console.log(this.totalPage);
-        console.log(this.totalcount);
-      } else {
-        console.log('La propriété "headers" ou l\'en-tête "x-wp-totalpages" n\'est pas définie.');
-      }
-    }, err => {
-      console.log(err);
-    });
-
+  navigateToCategory(id: any, tagname: any){
+    this.router.navigate(
+      ['/shop',id, tagname])
+      this.shopServiceService.getProduct(this.route.snapshot.paramMap.get('category')||"")
   }
-
 }

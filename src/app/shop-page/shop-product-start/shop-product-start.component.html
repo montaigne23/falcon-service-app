@@ -27,9 +27,9 @@
             </div>
         </div>
     </div>
-    <ng-container *ngIf="!loadingProduct">
+    <ng-container *ngIf="!shopServiceService.loadingProduct">
 
-        <ng-container *ngFor="let item of products">
+        <ng-container *ngFor="let item of shopServiceService.products">
 
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
@@ -63,7 +63,7 @@
         </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="loadingProduct">
+    <ng-container *ngIf="shopServiceService.loadingProduct">
         <div *ngFor="let index of numbers" class="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
@@ -97,17 +97,17 @@
     <div class="col-12">
         <nav>
             <ul class="pagination justify-content-center">
-                <li *ngIf="this.currentPage == 1" class="page-item disabled"><a
+                <li *ngIf="this.shopServiceService.currentPage == 1" class="page-item disabled"><a
                         class="page-link"><span>Previous</span></a></li>
-                <li class="page-item"
-                    *ngIf="currentPage !== undefined && this.currentPage > 1 && currentPage !== undefined"><a
-                        class="page-link" (click)="this.getMorePage(this.currentPage-1)"><span>Previous</span></a></li>
+                <li class="page-item" style="cursor: pointer;"
+                    *ngIf="shopServiceService.currentPage !== undefined && this.shopServiceService.currentPage > 1 && shopServiceService.currentPage !== undefined"><a
+                        class="page-link" (click)="this.shopServiceService.getMorePage(this.shopServiceService.currentPage-1)"><span>Previous</span></a></li>
                 <li class="page-item active"><a class="page-link">1</a></li>
-                <li class="page-item"><a class="page-link">2</a></li>
-                <li class="page-item"><a class="page-link">3</a></li>
-                <li class="page-item" *ngIf="totalPage!==undefined && currentPage !== undefined && this.currentPage < totalPage" (click)="getMorePage(this.currentPage+1)"><a
+                <li class="page-item" style="cursor: pointer;"><a class="page-link">2</a></li>
+                <li class="page-item" style="cursor: pointer;"><a class="page-link">3</a></li>
+                <li class="page-item" style="cursor: pointer;" *ngIf="shopServiceService.totalPage!==undefined && shopServiceService.currentPage !== undefined && this.shopServiceService.currentPage < shopServiceService.totalPage" (click)="shopServiceService.getMorePage(this.shopServiceService.currentPage+1)"><a
                         class="page-link">Next</a></li>
-                <li class="page-item disabled" *ngIf="this.currentPage == totalPage" ><a
+                <li class="page-item disabled" *ngIf="this.shopServiceService.currentPage == shopServiceService.totalPage" ><a
                         class="page-link">Next</a></li>
             </ul>
         </nav>

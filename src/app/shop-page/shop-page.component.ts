@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopServiceService } from '../services/shop-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-shop-page',
   templateUrl: './shop-page.component.html',
@@ -8,10 +9,19 @@ import { ShopServiceService } from '../services/shop-service.service';
 export class ShopPageComponent implements OnInit {
   activecategory : string 
 constructor(
-  private shopServiceService:ShopServiceService
+  private shopServiceService:ShopServiceService,
+  private route: ActivatedRoute,
+  private router: Router,
+  
   ){
     this.activecategory  = this.shopServiceService.activeCategory
   }
   ngOnInit(){
+
+}
+navigateToCategory(){
+  this.router.navigate(
+    ['/shop'])
+    this.shopServiceService.getProduct(this.route.snapshot.paramMap.get('category')||"")
 }
 }
