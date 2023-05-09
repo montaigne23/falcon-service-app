@@ -43,7 +43,6 @@
                 </a>
 
                 <div>
-
                     <div style="margin-left: -55px; margin-right: 25px;"
                         class="d-inline-flex align-items-center text-decoration-none d-block d-lg-none">
 
@@ -58,13 +57,13 @@
                                 style="padding-bottom: 0px;">{{this._TestserviceService.totalData1}}</span>
                         </a>
                     </div>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <a class="navbar-toggler" data-toggle="collapse" (click)="toggleMenu2()">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </a>
                 </div>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="collapse navbar-collapse justify-content-betweenw" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+                        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Homes</a>
                         <a class="nav-item nav-link" [routerLink]="['/shop']" routerLinkActive="active">Shop</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i
@@ -75,6 +74,17 @@
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories <i
+                                    class="fa fa-angle-down mt-1"></i></a>
+                            <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                <!-- <a class="dropdown-item">Shopping Cart</a> -->
+                                <ng-container *ngFor="let item of productscategorie">
+                                    <a  style="cursor: pointer;" (click)="navigateToCategory(item.id)" class="dropdown-item">{{item.name}}</a>
+                                    
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
                     <br>
                     <br>

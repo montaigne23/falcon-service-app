@@ -21,10 +21,13 @@ export class NavbarComponent implements OnInit{
   }
   // Element pour la navigation
   private navigation: HTMLElement;
+  private menu: HTMLElement;
   // Écouteur d'événements
   private documentClickListener: () => void;
+  private documentClickListener2: () => void;
   // Boolean pour savoir si le menu est ouvert ou non
   public menuOuvert: boolean = false;
+  public menuOuvert2: boolean = false;
 
   constructor(public _TestserviceService :TestserviceService ,
     private woocategorie: WoocommerceCategoriesService,
@@ -43,14 +46,17 @@ export class NavbarComponent implements OnInit{
   }
   ngAfterViewInit() {
     this.navigation = this.elementRef.nativeElement.querySelector('.navbar-vertical');
+    this.menu = this.elementRef.nativeElement.querySelector('#navbarCollapse');
 }
   async navigateToCategory(id: any){
     this.toggleMenu();
+    this.toggleMenu2();
    await this.router.navigate(
       ['/shop',id]);
       
      this.shopServiceService.getProduct(id || "")
   }
+
   public toggleMenu() {
     this.menuOuvert = !this.menuOuvert;
     if (this.menuOuvert) {
@@ -64,6 +70,23 @@ export class NavbarComponent implements OnInit{
         });
     } else {
         this.renderer.removeClass(this.navigation, 'show');
+    }
+}
+  public toggleMenu2() {
+    
+    this.menuOuvert2 = !this.menuOuvert2;
+    if (this.menuOuvert2) {
+      this.renderer.addClass(this.menu, 'show');
+      console.log("ok");
+        this.documentClickListener2 = this.renderer.listen('document', 'click', (event: any) => {
+            if (!this.elementRef.nativeElement.contains(event.target)) {
+                this.menuOuvert = false;
+                this.renderer.removeClass(this.menu, 'show');
+                this.documentClickListener2();
+            }
+        });
+    } else {
+        this.renderer.removeClass(this.menu, 'show');
     }
 }
 }
