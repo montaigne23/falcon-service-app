@@ -4,7 +4,7 @@
     <div class="row px-xl-5">
         <ng-container *ngIf="!loadingProduct">
             <ng-container *ngFor="let item of products">
-                <div *nfIf="item.categories[0].id" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div *nfIf="item.categories[0].id != undefined " class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" [src]="item.images[0].src" alt="">
