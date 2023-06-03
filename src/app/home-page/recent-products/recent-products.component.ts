@@ -17,6 +17,7 @@ export class RecentProductsComponent implements OnInit {
   productOrder: ProductOrder = ProductOrder.desc
   
   productQuery:ProductQuery= {
+    in_stock:true,
     page: 1,
     per_page: 9,
     order: this.productOrder,
@@ -30,7 +31,7 @@ export class RecentProductsComponent implements OnInit {
   this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
   this.retrieveProductsResponse = response
   this.products = this.retrieveProductsResponse.products
-  this.products? console.log(this.products[3]?.categories): null;
+  //this.products? console.log(this.products[3]?.categories): null;
   this.loadingProduct = false;
   }, err => { 
     console.log(err);
