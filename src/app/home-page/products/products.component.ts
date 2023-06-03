@@ -34,6 +34,8 @@ export class ProductsComponent implements OnInit {
     this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
       this.retrieveProductsResponse = response
       this.products = this.retrieveProductsResponse.products
+      console.log(this.products);
+      
       this.loadingProduct = false;
     }, err => {
       console.log(err);
