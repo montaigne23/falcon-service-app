@@ -19,8 +19,8 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a *ngIf="item.categories[0]" class="h6 text-decoration-none text-truncate"
-                                [routerLink]="['/shop', item.categories[0].id, item.slug]">{{item.name}}</a>
+                            <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                                [routerLink]="['/shop', item.categories[0]?.id, item.slug]">{{item.name}}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5>{{item.price}}</h5>
                                 <h6 class="text-muted ml-2"><del>{{item.sale_price}}</del></h6>
