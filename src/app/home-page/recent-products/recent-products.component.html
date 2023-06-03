@@ -5,7 +5,7 @@
         <ng-container *ngIf="!loadingProduct">
 
             <ng-container *ngFor="let item of products">
-                <ng-container *ngIf="item.categories.length == 1">
+                <!-- <ng-container *ngIf="item.categories.length == 1"> -->
                     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                         <div class="product-item bg-light mb-4">
                             <div class="product-img position-relative overflow-hidden">
@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                                <a *ngIf="item.categories[0]" class="h6 text-decoration-none text-truncate"
                                     [routerLink]="['/shop', item.categories[0].id, item.slug]">{{item.name}}</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>{{item.sale_price}}</h5>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                </ng-container>
+                <!-- </ng-container> -->
             </ng-container>
         </ng-container>
 
