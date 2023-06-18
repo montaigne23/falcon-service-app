@@ -37,6 +37,7 @@ import { AuthService } from './services/auth/auth.service';
 import { WoocommerceHelperService } from './services/helper.service';
 import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CardProductComponent } from './components/card-product/card-product.component';
 //import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
 
 @NgModule({
@@ -64,6 +65,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     SearchComponent,
     StatusAccountComponent,
     LoadingModalComponent,
+    CardProductComponent,
   ],
   imports: [
     BrowserAnimationsModule,

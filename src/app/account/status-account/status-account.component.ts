@@ -13,7 +13,6 @@ export class StatusAccountComponent implements OnInit {
   IsToken: string;
   name: string
   constructor(private AuthService: AuthService, private toastr: ToastrService) {
-    console.log(1);
     // this.toastr.success('Your notification message', 'Title', { timeOut: 3000 });
   }
   ngOnInit() {

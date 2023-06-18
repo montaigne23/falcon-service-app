@@ -31,7 +31,7 @@
 
         <ng-container *ngFor="let item of shopServiceService.products">
 
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1 card-product">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" [src]="item.images[0].src" alt="">
@@ -43,11 +43,11 @@
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
-                            [routerLink]="['/shop', item.categories[0].id, item.slug]">{{item.name}}</a>
+                        <p *ngIf="item.categories" class="h6 text-decoration-none"
+                            [routerLink]="['/shop', item.categories[0].id, item.slug] " style="cursor: pointer;">{{item.name}}</p>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>{{item.regular_price}}</h5>
-                            <h6 class="text-muted ml-2"><del>{{item.sale_price}}</del></h6>
+                            <h5>{{item.sale_price}}</h5>
+                            <h6 class="text-muted ml-2"><del>{{item.regular_price}}</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
