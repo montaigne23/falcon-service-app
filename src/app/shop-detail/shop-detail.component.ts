@@ -5,6 +5,8 @@ import { TestserviceService } from '../services/testservice.service';
 import { Product, ProductOrder, ProductQuery, RetrieveProductsResponse } from '../services/products/product.interface';
 import { WoocommerceProductsService } from '../services/products/woocommerce-products.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ShopcartService } from '../services/orders/shopcart.service';
+import { OrderItem } from '../services/orders/orders.interface';
 
 @Component({
   selector: 'app-shop-detail',
@@ -145,15 +147,34 @@ export class ShopDetailComponent implements OnInit {
     ,
     category: ""
   }
+   orderItem: OrderItem = {
+    name: "",
+    product_id: 0,
+    quantity: 1,
+    subtotal: '',
+    subtotal_tax: '',
+    total: '',
+    total_tax: '',
+    taxes: [],
+    meta_data: [],
+    price: "",
+    sku: ''
+  };
+
   constructor(private route: ActivatedRoute,
     public _TestserviceService: TestserviceService,
     private router: Router,
     private wooProducs: WoocommerceProductsService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public shopcartService:ShopcartService
   ) {
     window.scroll(0, 0)
   }
   
+  setQty(value:any){
+    console.log(value);
+    
+  }
   async ngOnInit(): Promise<void>  {
     this.loadingProduct = true;
     this.slug = this.route.snapshot.paramMap.get('id');
@@ -164,6 +185,9 @@ export class ShopDetailComponent implements OnInit {
       this.retrieveProductsResponse = response
       if (this.retrieveProductsResponse.products != undefined) {
         this.product = this.retrieveProductsResponse.products[0]
+        this.orderItem.name = this.product.name;
+        this.orderItem.product_id = this.product.id;
+        this.orderItem.price = this.product.sale_price;
       }
       this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
       this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);
@@ -218,9 +242,20 @@ export class ShopDetailComponent implements OnInit {
     }
     return p;
   }
-  addtocard() {
+
+  async addtocard() {
     this._TestserviceService.totalData1 += this.quantity
-    this.quantity = 1
+    this.orderItem.quantity= this.quantity;
+    this.quantity = 1;
+    this.orderItem.total = (this.orderItem.quantity* Number(this.orderItem.price)).toString()
+    this.orderItem.subtotal = (this.orderItem.quantity* Number(this.orderItem.price)).toString()
+   await this.shopcartService.addProduct(this.orderItem).then((value)=>{
+     console.log(this.shopcartService.orderItems);
+    //  console.log(this.orderItem.quantity);
+    
+    // this.orderItem.quantity = 1;
+     
+   });
   }
   plus() {
     this.quantity += 1
@@ -243,7 +278,10 @@ export class ShopDetailComponent implements OnInit {
        await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
          this.retrieveProductsResponse = response
          if (this.retrieveProductsResponse.products != undefined) {
-           this.product = this.retrieveProductsResponse.products[0]
+           this.product = this.retrieveProductsResponse.products[0];
+           this.orderItem.name = this.product.name;
+           this.orderItem.product_id = this.product.id;
+           this.orderItem.price = this.product.sale_price;
          }
          this.ShortDescriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.short_description);
          this.Descriptioncontent = this.sanitizer.bypassSecurityTrustHtml(this.product.description);

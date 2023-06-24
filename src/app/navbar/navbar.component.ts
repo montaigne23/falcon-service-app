@@ -15,8 +15,9 @@ export class NavbarComponent implements OnInit{
   @Input() inputexemple: any
 
   productscategorie: ProductCategory[]
+  productsSubcategorie: ProductCategory[]
   categoryQuery : CategoryQuery = {
-    parent:0
+    parent:50
    //search:"38"
   }
   // Element pour la navigation
@@ -43,6 +44,7 @@ export class NavbarComponent implements OnInit{
     }, err => {
       console.log(err);
     })
+    
   }
   ngAfterViewInit() {
     this.navigation = this.elementRef.nativeElement.querySelector('.navbar-vertical');

@@ -68,7 +68,7 @@
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">{{product.regular_price}} FCFA</h3>
+                    <h3 class="font-weight-semi-bold mb-4">{{product.sale_price}} FCFA</h3>
                     <div class="mb-4" [innerHTML]="ShortDescriptioncontent">
 
                     </div>
@@ -79,7 +79,7 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center"
+                            <input type="text" onkeyup="setQty($event.target.value)" class="form-control bg-secondary border-0 text-center"
                                 [value]="this.quantity">
                             <div class="input-group-btn">
                                 <button (click)="this.plus()" class="btn btn-primary btn-plus">
@@ -213,7 +213,7 @@
                             </div>
                             <div class="text-center py-4">
                                 <ng-container *ngIf="item.slug != undefined ; else elseNoSlug">
-                                    <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                                    <a *ngIf="item.categories" class="h6 text-decoration-none"
                                         (click)="goProduct(item.slug, item.categories[0].id)">{{item.name}}</a>
                                 </ng-container>
                                 <ng-template #elseNoSlug>

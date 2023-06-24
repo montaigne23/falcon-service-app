@@ -5,7 +5,7 @@
 
             <ng-container *ngFor="let item of products">
     
-                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1" style="max-width: 180px;">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" [src]="item.images[0].src" alt="">
@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a *ngIf="item.categories" class="h6 text-decoration-none text-truncate"
+                            <a *ngIf="item.categories" class="h6 text-decoration-none"
                             [routerLink]="['/shop', item.categories[0]?.id, item.slug]">{{item.name}}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5>{{item.sale_price}}</h5>
