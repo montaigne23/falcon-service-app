@@ -170,16 +170,13 @@ export class ShopDetailComponent implements OnInit {
   ) {
     window.scroll(0, 0)
   }
-  
-  setQty(value:any){
-    console.log(value);
-    
-  }
+
+
   async ngOnInit(): Promise<void>  {
     this.loadingProduct = true;
     this.slug = this.route.snapshot.paramMap.get('id');
    // console.log(this.slug);
-    
+
     this.productQuery.slug = this.slug
     await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
       this.retrieveProductsResponse = response
@@ -197,7 +194,7 @@ export class ShopDetailComponent implements OnInit {
         this.retrieveProductsResponse = response
         this.products = this.retrieveProductsResponse.products
         console.log(this.product);
-        
+
         this.loadingProduct = false;
       }, err => {
         console.log(err);
@@ -252,9 +249,9 @@ export class ShopDetailComponent implements OnInit {
    await this.shopcartService.addProduct(this.orderItem).then((value)=>{
      console.log(this.shopcartService.orderItems);
     //  console.log(this.orderItem.quantity);
-    
+
     // this.orderItem.quantity = 1;
-     
+
    });
   }
   plus() {
@@ -273,7 +270,7 @@ export class ShopDetailComponent implements OnInit {
       ['/shop',id, tagname])
       this.slug = tagname;
       // console.log(this.slug);
-       
+
        this.productQuery.slug = this.slug
        await this.wooProducs.retrieveProducts(this.productQuery).subscribe(response => {
          this.retrieveProductsResponse = response
@@ -291,7 +288,7 @@ export class ShopDetailComponent implements OnInit {
            this.retrieveProductsResponse = response
            this.products = this.retrieveProductsResponse.products
            console.log(this.product);
-           
+
            this.loadingProduct = false;
          }, err => {
            console.log(err);

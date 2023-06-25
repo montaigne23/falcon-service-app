@@ -68,6 +68,7 @@ import { CardProductComponent } from './components/card-product/card-product.com
     CardProductComponent,
   ],
   imports: [
+    FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
     BrowserModule,

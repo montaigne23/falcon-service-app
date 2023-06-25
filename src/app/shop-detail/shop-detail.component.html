@@ -79,7 +79,7 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" onkeyup="setQty($event.target.value)" class="form-control bg-secondary border-0 text-center"
+                            <input type="number" [(ngModel)]="this.quantity" class="form-control bg-secondary border-0 text-center"
                                 [value]="this.quantity">
                             <div class="input-group-btn">
                                 <button (click)="this.plus()" class="btn btn-primary btn-plus">

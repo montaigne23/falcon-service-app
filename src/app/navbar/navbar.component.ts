@@ -4,6 +4,7 @@ import { CategoryQuery, ProductCategory } from '../services/categories/product-c
 import { WoocommerceCategoriesService } from '../services/categories/woocommerce-categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShopServiceService } from '../services/shop-service.service';
+import { ShopcartService } from '../services/orders/shopcart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -30,7 +31,7 @@ export class NavbarComponent implements OnInit{
   public menuOuvert: boolean = false;
   public menuOuvert2: boolean = false;
 
-  constructor(public _TestserviceService :TestserviceService ,
+  constructor(public ShopcartService:ShopcartService,
     private woocategorie: WoocommerceCategoriesService,
     private router: Router,
     public shopServiceService:ShopServiceService,
@@ -44,7 +45,7 @@ export class NavbarComponent implements OnInit{
     }, err => {
       console.log(err);
     })
-    
+
   }
   ngAfterViewInit() {
     this.navigation = this.elementRef.nativeElement.querySelector('.navbar-vertical');
@@ -55,7 +56,7 @@ export class NavbarComponent implements OnInit{
     this.toggleMenu2();
    await this.router.navigate(
       ['/shop',id]);
-      
+
      this.shopServiceService.getProduct(id || "")
   }
 
@@ -75,7 +76,7 @@ export class NavbarComponent implements OnInit{
     }
 }
   public toggleMenu2() {
-    
+
     this.menuOuvert2 = !this.menuOuvert2;
     if (this.menuOuvert2) {
       this.renderer.addClass(this.menu, 'show');
