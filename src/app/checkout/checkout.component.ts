@@ -172,7 +172,7 @@ export class CheckoutComponent implements OnInit {
     this.loading=true
     this.initValues();
     this.orderService.createOrder(this.order).subscribe((e) => {
-     // this.ShopcartService.clearAll();
+     this.ShopcartService.clearAll();
      this.loading=false;
      this.router.navigate(['/shopping-cart']);
     })
