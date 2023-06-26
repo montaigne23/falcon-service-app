@@ -51,7 +51,7 @@ param:string|null;
   ngAfterViewInit() {
     this.param = this.route.snapshot.queryParamMap.get('search');
   }
-  goToShop() {
+  goToShop() { 
     const params = {
       search: this.searchTerm.toLowerCase(),
     };
