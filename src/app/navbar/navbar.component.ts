@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit{
   productscategorie: ProductCategory[]
   productsSubcategorie: ProductCategory[]
   categoryQuery : CategoryQuery = {
-    parent:50
+    parent:0
    //search:"38"
   }
   // Element pour la navigation
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     this.woocategorie.retrieveCategories(this.categoryQuery).subscribe(response => {
       this.productscategorie = response;
-      console.log(response);
+      // console.log(response);
     }, err => {
       console.log(err);
     })

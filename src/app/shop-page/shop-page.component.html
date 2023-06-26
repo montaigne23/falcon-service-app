@@ -6,9 +6,14 @@
                     <a class="breadcrumb-item text-dark" routerLink="/home">Home</a>
                     <a class="breadcrumb-item text-dark" (click)="navigateToCategory()" >Shop</a>
                     <span *ngIf="activecategory != ''; else elseCategory" class="breadcrumb-item" >Shop List</span>
-                   <ng-template #elseCategory>
-                       <span  class="breadcrumb-item active" >Shop List</span>
-                   </ng-template>
+
+                    <span *ngIf="shopServiceService.productQuery.search!=''"  class="breadcrumb-item active" >recherche : "{{shopServiceService.productQuery.search}}"</span>
+
+                    <ng-template #elseCategory>
+                        <ng-container>
+                          <span  class="breadcrumb-item active" >Shop List</span>
+                        </ng-container>
+                      </ng-template>
                     <span *ngIf="activecategory != ''" class="breadcrumb-item active" >{{activecategory}}</span>
                 </nav>
             </div>

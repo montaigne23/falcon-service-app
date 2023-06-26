@@ -19,7 +19,8 @@ export class ShopServiceService {
 
   productQuery: ProductQuery = {
     page: 1,
-    per_page: 9,
+    per_page: 15,
+    search:"",
     order: this.productOrder,
     category: ""
   }
@@ -32,8 +33,13 @@ export class ShopServiceService {
   public activeCategory: string = ""
 
   public getProduct(slug:string) {
+
+    const param1 = this.route.snapshot.queryParamMap.get('search');
+    // console.log("ok");
+    param1!=null?  this.productQuery.search = param1:"";
+
     // slug = this.route.snapshot.paramMap.get('category')||"";
-    console.log(slug);
+    //console.log(slug);
     this.loadingProduct = true;
     this.productQuery.category = slug || ""
     this.currentPage = 1

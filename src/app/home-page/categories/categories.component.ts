@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit {
     this.woocategorie.retrieveCategories(this.categoryQuery).subscribe(response => {
       this.productscategorie = response;
       this.loadingcategorie = false
-      console.log(response);
+      // console.log(response);
     }, err => {
       console.log(err);
     })

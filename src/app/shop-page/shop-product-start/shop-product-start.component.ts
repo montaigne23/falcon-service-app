@@ -23,7 +23,8 @@ export class ShopProductStartComponent implements OnInit {
 
   productQuery: ProductQuery = {
     page: 1,
-    per_page: 9,
+    per_page: 13,
+    search:"",
     order: this.productOrder,
     category:""
   }
@@ -31,10 +32,10 @@ export class ShopProductStartComponent implements OnInit {
     private wooProducs: WoocommerceProductsService,
     private router: Router,
     private route: ActivatedRoute,
-    public shopServiceService:ShopServiceService
-  ) { 
-    console.log("ok");
+    public shopServiceService:ShopServiceService,
+  ) {
     
+
   }
 
   ngOnInit():void {

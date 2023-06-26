@@ -2,9 +2,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { SessionStorageService } from 'ngx-webstorage';
-import { AuthService } from 'src/app/services/account.service';
+//import { AuthService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
-import io from 'socket.io-client';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { RegisterPayload } from 'src/app/services/auth/auth.interface';
 
 @Component({
   selector: 'app-signuppage',
@@ -16,10 +17,15 @@ export class SignuppageComponent {
 
   passwordMismatch = false; //controle la validité du mot de passe
   hidePassword = false; //controle la vue du mot de passe
-
-  signupForm2: FormGroup;//formulaire de la deuxième page
-  private socket = io('https://real-timeapi-production.up.railway.app');
-  // private socket = io('https://real-timeapi-production.up.railway.app');
+  registerPayload: RegisterPayload = {
+    display_name: "",
+    nonce: "",
+    notify: "",
+    email: "",
+    username: "",
+    user_pass: ""
+  }
+  signupForm2: FormGroup; //formulaire de la deuxième page
   constructor(private formBuilder: FormBuilder,
     private AuthService: AuthService,
     private sessionStorage: SessionStorageService,
@@ -28,15 +34,8 @@ export class SignuppageComponent {
   ) {
   }
 
- 
-  async ngOnInit() {
-    this.socket.on('connect', () => {
-      console.log('Connected to WebSocket server');
-    });
 
-    this.socket.on('receive-comment-700', (data) => {
-      console.log('Received new comment:', data);
-    });
+  async ngOnInit() {
 
     /* initialisation du formulaire de la deuxième page */
     this.signupForm2 = this.formBuilder.group({
@@ -53,15 +52,7 @@ export class SignuppageComponent {
       });
 
   }
-  handleSendComment = () => {
-    var sendCommentRequestDto = {
-      post_id: 701,
-      parent_id: 608,
-      comment: "test",
-      _comment: "comment", // TODO : Ajouter le Parseur des formules
-    };
-    this.socket.emit("send-comment", sendCommentRequestDto);
-  };
+
 
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password');
@@ -75,20 +66,19 @@ export class SignuppageComponent {
   }
 
   async onSignupfinale() {
-    console.log(this.signupForm2.value);
-    await this.AuthService.signupfinal(
-      this.signupForm2.value?.password,
-      this.signupForm2.value?.email,
-      this.signupForm2.value?.nom_utilisateur,
+
+    this.registerPayload.display_name = "test 1";
+    this.registerPayload.email = this.signupForm2.value?.email;
+    this.registerPayload.nonce = "";
+    this.registerPayload.notify = "";
+    this.registerPayload.username = this.signupForm2.value?.nom_utilisateur;
+    this.registerPayload.user_pass = this.signupForm2.value?.password;
+
+    //  console.log(this.signupForm2.value);
+    this.AuthService.register(
+      this.registerPayload
     );
   }
-  testsocket() {
-    this.socket.on('send-comment', () => {
-      console.log('Connected to WebSocket server');
-    });
-
-  }
-
   annuler() {
     // localStorage.removeItem('CreateInfoUser') //on vide ses information du localstorage
   }

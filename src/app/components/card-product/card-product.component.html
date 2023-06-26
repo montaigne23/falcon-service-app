@@ -1,1 +1,27 @@
-<p>card-product works!</p>
+<div class="product-item bg-light mb-4">
+  <div class="product-img position-relative overflow-hidden">
+    <img class="img-fluid w-100" [src]="item.images[0].src" alt="">
+    <div class="product-action">
+      <a class="btn btn-outline-dark btn-square" (click)="addtocard(item)" ><i class="fa fa-shopping-cart"></i></a>
+      <!-- <a class="btn btn-outline-dark btn-square" ><i class="far fa-heart"></i></a>
+      <a class="btn btn-outline-dark btn-square" ><i class="fa fa-sync-alt"></i></a>
+      <a class="btn btn-outline-dark btn-square" ><i class="fa fa-search"></i></a> -->
+    </div>
+  </div>
+  <div class="text-center py-4">
+    <p *ngIf="item.categories" class="h6 text-decoration-none"
+      [routerLink]="['/shop', item.categories[0].id, item.slug]" style="cursor: pointer; font-size:0.8em;">{{item.name}}</p>
+    <div class="row align-items-center justify-content-center mt-2" >
+      <h5 class="col" style="font-size:0.8em;">{{convertNumber(item.sale_price)|fcfa}}</h5>
+      <h6 style="font-size:0.8em;" class="text-muted ml-2 col"><del>{{convertNumber(item.regular_price)|fcfa}}</del></h6>
+    </div>
+    <div class="d-flex align-items-center justify-content-center mb-1">
+      <small class="fa fa-star text-primary mr-1"></small>
+      <small class="fa fa-star text-primary mr-1"></small>
+      <small class="fa fa-star text-primary mr-1"></small>
+      <small class="fa fa-star-half-alt text-primary mr-1"></small>
+      <small class="far fa-star text-primary mr-1"></small>
+      <!-- <small>{{item.comment}}</small> -->
+    </div>
+  </div>
+</div>

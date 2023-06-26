@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { WoocommerceHelperService } from '../helper.service';
 import { AppInterceptor } from 'src/app/appIntercetor';
@@ -17,12 +17,19 @@ export class OrderService {
     private wooHelper: WoocommerceHelperService,
     private appInterceptor: AppInterceptor
 
-  ) { }
+  ) {
+  }
 
+  httpOptionslogin = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${ localStorage.getItem("jwt")}` // Ajouter le token d'authentification à l'en-tête
+    })
+  };
   createOrder(order: Order): Observable<Order> {
     const requestUrl = `${environment.origin}${environment.wcEndpoint}/orders${this.appInterceptor.includeWooAuth("orders")}`;
 
-    return this.httpClient.post<Order>(requestUrl, order, { observe: 'response' })
+    return this.httpClient.post<Order>(requestUrl, order,{ observe: 'response' })
       .pipe(map(value => this.wooHelper.includeResponseHeader(value, 'orders')),
       catchError(err => this.wooHelper.handleError(err)));
   }

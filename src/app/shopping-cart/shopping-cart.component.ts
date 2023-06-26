@@ -12,16 +12,21 @@ export class ShoppingCartComponent implements OnInit {
   shopcart:OrderItem[];
   storeshopcart:any
   constructor(private orderService: OrderService, public ShopcartService:ShopcartService) {
-     this.storeshopcart = this.ShopcartService.getCookie("shopcart");
+    this.ShopcartService.getCookie("shopcart");
+    this.ShopcartService.calculSummary();
   }
 
   ngOnInit(): void {
-    
   this.orderService.listAllOrder().subscribe((value)=>{
       console.log(value);
     });
-    this.shopcart = this.storeshopcart ? JSON.parse(this.storeshopcart) : [];
-    console.log(this.shopcart);
+    // this.shopcart = this.storeshopcart ? JSON.parse(this.storeshopcart) : [];
+    // console.log(this.shopcart);
   }
-
+setQty(event:any){
+  alert(event.target!.value)
+}
+convertNumber(e:string|undefined){
+return Number(e);
+}
 }

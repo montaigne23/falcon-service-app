@@ -7,12 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./shop-page.component.scss']
 })
 export class ShopPageComponent implements OnInit {
-  activecategory : string 
+  activecategory : string
 constructor(
-  private shopServiceService:ShopServiceService,
+  public shopServiceService:ShopServiceService,
   private route: ActivatedRoute,
   private router: Router,
-  
+
   ){
     this.activecategory  = this.shopServiceService.activeCategory
   }

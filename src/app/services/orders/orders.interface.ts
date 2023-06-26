@@ -51,7 +51,7 @@ export interface headers {
     "x-wp-total": string;
    "x-wp-totalpages": string;
   }
-  
+
 export interface RetrieveOrdersResponse {
     products?: Order[];
     headers?: headers;
@@ -79,6 +79,7 @@ export interface Shipping {
     state?: string;
     postcode?: string;
     country?: string;
+    phone?: string;
 }
 
 export interface OrderItem {

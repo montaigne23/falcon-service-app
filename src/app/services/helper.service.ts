@@ -29,13 +29,12 @@ export class  WoocommerceHelperService {
     return queryPatch;
   }
 
-  includeEncoded(query :any = {}) {
+  includeEncoded(query :any) {
     const params = new FormData();
     Object.keys(query).forEach((key) => {
       params.append(key, query[key]);
     });
-    console.log(params);
-    return params;
+   return params;
   }
 
   includeResponseHeader(response: any, responseBodyKey?: string) {

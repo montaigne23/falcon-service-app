@@ -241,7 +241,6 @@ export class ShopDetailComponent implements OnInit {
   }
 
   async addtocard() {
-    this._TestserviceService.totalData1 += this.quantity
     this.orderItem.quantity= this.quantity;
     this.quantity = 1;
     this.orderItem.total = (this.orderItem.quantity* Number(this.orderItem.price)).toString()

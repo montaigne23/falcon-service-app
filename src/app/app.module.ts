@@ -38,10 +38,13 @@ import { WoocommerceHelperService } from './services/helper.service';
 import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CardProductComponent } from './components/card-product/card-product.component';
+import { FCFAPipe } from './pipes/fcfa.pipe';
+import { CheckoutComponent } from './checkout/checkout.component';
 //import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
 
 @NgModule({
   declarations: [
+    FCFAPipe,
     AppComponent,
     HomePageComponent,
     FooterPageComponent,
@@ -66,6 +69,7 @@ import { CardProductComponent } from './components/card-product/card-product.com
     StatusAccountComponent,
     LoadingModalComponent,
     CardProductComponent,
+    CheckoutComponent,
   ],
   imports: [
     FormsModule,
