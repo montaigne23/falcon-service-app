@@ -87,7 +87,7 @@ export class AuthService {
       d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000)); // Set the expiration to one year from now
     const expires = "expires=" + d.toUTCString();
     document.cookie = "jwt" + "=" + JSON.stringify(response?.data?.token) + "; " + expires + "; path=/";
-    document.cookie = "info_user" + "=" + JSON.stringify(response?.data?.token) + "; " + expires + "; path=/";
+    document.cookie = "info_user" + "=" + JSON.stringify(response?.data) + "; " + expires + "; path=/";
       //this.token = response?.data.token
     //   this.cookieService.set('jwt', JSON.stringify(response.data)); // Stocke le token JWT dans un cookie nommé 'jwt'
     //   // this.sessionStorage.store('jwt', JSON.stringify(response?.data.token));

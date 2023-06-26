@@ -27,7 +27,7 @@ export class StatusAccountComponent implements OnInit {
     if (this.IsToken) {
     }
     if (this.IsUserInfo) {
-      console.log(JSON.parse(this.IsUserInfo));
+      //console.log(JSON.parse(this.IsUserInfo));
       this.name = JSON.parse(this.IsUserInfo).displayName
     }
 

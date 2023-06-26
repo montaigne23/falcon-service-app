@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
   retrieveProductsResponse: RetrieveProductsResponse
 
-param:string|null;
+param:string|null="";
     constructor(private wooProducs: WoocommerceProductsService, private router: Router,private route: ActivatedRoute,) {
     // console.log("ok");
 
@@ -47,11 +47,13 @@ param:string|null;
   // }
   ngOnInit() {
 
+    this.param = this.route.snapshot.queryParamMap.get('search');
+    console.log(this.param);
   }
   ngAfterViewInit() {
-    this.param = this.route.snapshot.queryParamMap.get('search');
+
   }
-  goToShop() { 
+  goToShop() {
     const params = {
       search: this.searchTerm.toLowerCase(),
     };

@@ -9,7 +9,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class VendorComponent implements OnInit {
   public data:any = 0
   @Input() inputexemple= 100
-  
+
 ngOnInit(){
   this.data = this.inputexemple;
 }
