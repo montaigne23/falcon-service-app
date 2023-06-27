@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "outputHashing": "all",
+            "namedChunks": false,
+            "aot": true,
             "outputPath": "dist/falcon_service",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -33,7 +36,7 @@
                 "glob": "_redirects",
                 "input": "src",
                 "output": "/"
-               }
+              }
             ],
             "styles": [
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
