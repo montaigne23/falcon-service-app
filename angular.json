@@ -46,6 +46,7 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/assets/lib/animate/animate.min.css",
               "src/assets/scss/style.scss",
+              "src/assets/scss/FontAwesome/css/all.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [

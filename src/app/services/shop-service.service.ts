@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WoocommerceProductsService } from './products/woocommerce-products.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product, ProductOrder, ProductQuery, RetrieveProductsResponse } from './products/product.interface';
+import { Product, ProductOrder, ProductOrderBy, ProductQuery, RetrieveProductsResponse } from './products/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,12 @@ export class ShopServiceService {
   public loadingProduct: boolean = true;
   public productOrder: ProductOrder = ProductOrder.desc
   // public slug: string | null;
-
+  public productOrderBy:ProductOrderBy= ProductOrderBy.include;
   productQuery: ProductQuery = {
+    orderby:this.productOrderBy,
+    in_stock:true,
     page: 1,
-    per_page: 15,
+    per_page: 20,
     search:"",
     order: this.productOrder,
     category: ""
@@ -29,6 +31,8 @@ export class ShopServiceService {
     private router: Router,
     private route: ActivatedRoute,
   ) {
+    console.log(this.productOrderBy);
+
   }
   public activeCategory: string = ""
 
@@ -73,8 +77,8 @@ export class ShopServiceService {
       if (response.headers) {
         this.totalPage = Number(response.headers["x-wp-totalpages"])
         this.totalcount = Number(response.headers["x-wp-total"])
-        console.log(this.totalPage);
-        console.log(this.totalcount);
+        // console.log(this.totalPage);
+        // console.log(this.totalcount);
       } else {
         console.log('La propriété "headers" ou l\'en-tête "x-wp-totalpages" n\'est pas définie.');
       }
