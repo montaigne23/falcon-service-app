@@ -2,11 +2,11 @@
   <div class="input-group">
     <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm"
       [ngModelOptions]="{standalone: true}" (input)="onSearchInput($event)" [value]="param" placeholder="Search for products">
-    <div (click)="goToShop()" class="input-group-append" style="cursor: pointer;">
+    <button type="submit" (click)="goToShop()" class="input-group-append" style="cursor: pointer;border:none">
       <span class="input-group-text bg-transparent text-primary">
         <i class="fa fa-search"></i>
       </span>
-    </div>
+    </button>
   </div>
 </form>
 

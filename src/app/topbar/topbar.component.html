@@ -47,19 +47,21 @@
 
 
         <div class="row justify-content-between  align-items-center bg-light py-2 pt-2 px-xl-5 d-none d-lg-flex">
-            <div class="logo col">
-              <img src="assets/image/logo.jpg" alt="">
+            <div style="cursor: pointer;" [routerLink]="['/home']" class="logo col">
+              <img src="assets/image/logo.jpg" alt="Falcon service shop">
             </div>
 
             <div class="col-lg-4 col-6 text-left ">
                 <app-search></app-search>
             </div>
             <div class="col-lg-4 col-6 text-right">
-                <p class="m-0">Service Client</p>
+                <!-- <p class="m-0">Service Client</p> -->
                 <a class="text-body px-2" href="mailto:info@example.com"><i
-                        class="fa fa-envelope-open text-primary me-2"
+                        class="fa fa-envelope-open me-2"
                         style="margin-right: 3px;"></i>info@example.com</a>
-                <a class="text-body px-2" href="mailto:info@example.com"><i class="fa fa-phone-alt text-primary me-2"
+                <a href="" class="text-body px-2" href="https://api.whatsapp.com/send?phone=237699397286" target="_blank"><i class="fab fa-whatsapp text-success me-2"
                         style="margin-right: 3px;"></i>+237 699397286</a>
+                <!-- <a class="text-body px-2" href="mailto:info@example.com"><i class="fa fa-phone-alt text-primary me-2"
+                        style="margin-right: 3px;"></i>+237 699397286</a> -->
             </div>
     </div>

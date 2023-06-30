@@ -38,9 +38,9 @@ export class ShopServiceService {
 
   public getProduct(slug:string) {
 
-    const param1 = this.route.snapshot.queryParamMap.get('search');
-    // console.log("ok");
-    param1!=null?  this.productQuery.search = param1:"";
+    const param1 = this.route.snapshot.queryParamMap.get('search')||"";
+     console.log(param1);
+     this.productQuery.search = param1;
 
     // slug = this.route.snapshot.paramMap.get('category')||"";
     //console.log(slug);
