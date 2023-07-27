@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
   productQuery: ProductQuery = {
     in_stock:true,
     page: 1,
-    per_page: 9,
+    per_page: 15,
     order: this.productOrder,
     category: ""
   }
@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit {
       this.retrieveProductsResponse = response
       this.products = this.retrieveProductsResponse.products
       //console.log(this.products);
-      
+
       this.loadingProduct = false;
     }, err => {
       console.log(err);

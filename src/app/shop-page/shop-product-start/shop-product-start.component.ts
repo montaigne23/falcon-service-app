@@ -34,7 +34,7 @@ export class ShopProductStartComponent implements OnInit {
     private route: ActivatedRoute,
     public shopServiceService:ShopServiceService,
   ) {
-    
+
 
   }
 

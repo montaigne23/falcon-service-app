@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Order, RetrieveOrdersResponse } from './orders.interface';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AuthService } from '../account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,19 @@ export class OrderService {
   constructor(
     private httpClient: HttpClient,
     private wooHelper: WoocommerceHelperService,
-    private appInterceptor: AppInterceptor
-
+    private appInterceptor: AppInterceptor,
+    private AuthService: AuthService
   ) {
   }
 
   httpOptionslogin = {
+
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${ localStorage.getItem("jwt")}` // Ajouter le token d'authentification à l'en-tête
+      'Authorization': `Bearer ${ this.AuthService.getToken()}` // Ajouter le token d'authentification à l'en-tête
     })
   };
+
   createOrder(order: Order): Observable<Order> {
     const requestUrl = `${environment.origin}${environment.wcEndpoint}/orders${this.appInterceptor.includeWooAuth("orders")}`;
 

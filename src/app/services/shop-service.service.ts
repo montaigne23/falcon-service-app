@@ -36,9 +36,10 @@ export class ShopServiceService {
   }
   public activeCategory: string = ""
 
-  public getProduct(slug:string) {
+  public getProduct(slug: string) {
 
-    const param1 = this.route.snapshot.queryParamMap.get('search')||"";
+    let param1 = this.route.snapshot.queryParamMap.get('search')||"";
+     param1 = this.route.snapshot.queryParamMap.get('search')||"";
      console.log(param1);
      this.productQuery.search = param1;
 

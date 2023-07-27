@@ -12,18 +12,18 @@ import {
   // import { Router } from '@angular/router';
   import { catchError } from 'rxjs/operators';
   import { Observable, throwError } from 'rxjs';
-  
+
   // import { AuthService } from './auth.service';
   import { environment } from '../environments/environment';
-  
+
   @Injectable()
   export class AppInterceptor {
-  
+
     constructor(
       // private injector: Injector,
       // private router: Router
     ) { }
-  
+
     public includeWooAuth(url: string | string[]) {
       const wooAuth = `consumer_key=${environment.woocommerce.consumer_key}&consumer_secret=${environment.woocommerce.consumer_secret}`;
       const hasQuery = url.includes('?');
@@ -35,7 +35,7 @@ import {
       }
       return return_url;
     }
-  
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let authRequest;
       // const auth = this.injector.get(AuthService);
@@ -48,7 +48,7 @@ import {
       authRequest = request.clone({
         url: requestUrl
       });
-  
+
       return next.handle(authRequest)
         .pipe(
           catchError(err => {
@@ -63,4 +63,3 @@ import {
         );
     }
   }
-  
