@@ -10,16 +10,19 @@ import { WoocommerceCategoriesService } from 'src/app/services/categories/woocom
 })
 export class CategoriesComponent implements OnInit {
   productscategorie: ProductCategory[]
+  numbers: number[] = [1, 2, 3,];
+  loadingcategorie:boolean = true;
+
   categoryQuery : CategoryQuery = {
-   // parent:38
-   search:"38"
+   parent:0
   }
   constructor( private woocategorie: WoocommerceCategoriesService){
   }
   ngOnInit() {
     this.woocategorie.retrieveCategories(this.categoryQuery).subscribe(response => {
       this.productscategorie = response;
-      console.log(response);
+      this.loadingcategorie = false
+      // console.log(response);
     }, err => {
       console.log(err);
     })

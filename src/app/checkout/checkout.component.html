@@ -1,0 +1,332 @@
+<div class="container-fluid">
+  <ng-container *ngIf="!loading else sinon">
+    <div class="row px-xl-5">
+      <form [formGroup]="Form2" class="col-lg-8">
+        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">adresse de
+            facturation</span></h5>
+        <div class="bg-light p-30 mb-5">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label>First Name <span style="color: red;">*</span></label>
+              <input formControlName="BIfirstName" class="form-control" type="text" placeholder="John">
+              <div
+                *ngIf="Form2.controls['BIfirstName'].invalid && (Form2.controls['BIfirstName'].dirty || Form2.controls['BIfirstName'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIfirstName'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Last Name <span style="color: red;">*</span></label>
+              <input formControlName="BIlastName" class="form-control" type="text" placeholder="Doe">
+              <div
+                *ngIf="Form2.controls['BIlastName'].invalid && (Form2.controls['BIlastName'].dirty || Form2.controls['BIlastName'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIlastName'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>E-mail</label>
+              <input formControlName="BIemail" class="form-control" type="text" placeholder="example@SAemail.com">
+              <!-- <div
+              *ngIf="Form2.controls['BIemail'].invalid && (Form2.controls['BIemail'].dirty || Form2.controls['BIemail'].touched)"
+              class="text-danger">
+              <div *ngIf="Form2.controls['BIemail'].errors?.['required']">Le champ est réquis.</div>
+              <div *ngIf="Form2.controls['BIemail'].errors?.['email']">Format incorrect.</div>
+            </div> -->
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Mobile No <span style="color: red;">*</span></label>
+              <input formControlName="BIphone" class="form-control" type="phone" placeholder="+237652196847">
+              <div
+                *ngIf="Form2.controls['BIphone'].invalid && (Form2.controls['BIphone'].dirty || Form2.controls['BIphone'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIphone'].errors?.['required']">Le champ est réquis.</div>
+                <div *ngIf="Form2.controls['BIphone'].errors?.['pattern']">Respecter le format svp Please enter in the
+                  format '+XXXXXXXXXXXX</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Address Line 1 <span style="color: red;">*</span></label>
+              <input formControlName="BIadress1" class="form-control" type="text" placeholder="123 Street">
+              <div
+                *ngIf="Form2.controls['BIadress1'].invalid && (Form2.controls['BIadress1'].dirty || Form2.controls['BIadress1'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIadress1'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Address Line 2</label>
+              <input formControlName="BIadress2" class="form-control" type="text" placeholder="123 Street">
+
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Company</label>
+              <input formControlName="company" class="form-control" type="text" placeholder="company name">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Country <span style="color: red;">*</span></label>
+              <select formControlName="BIcountry" class="custom-select">
+                <option selected>Cameroun</option>
+                <!-- <option>Afghanistan</option>
+                            <option>Albania</option>
+                            <option>Algeria</option> -->
+              </select>
+              <div
+                *ngIf="Form2.controls['BIcountry'].invalid && (Form2.controls['BIcountry'].dirty || Form2.controls['BIcountry'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIcountry'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>City <span style="color: red;">*</span></label>
+              <input formControlName="BIcity" class="form-control" type="text" placeholder="New York">
+              <div
+                *ngIf="Form2.controls['BIcity'].invalid && (Form2.controls['BIcity'].dirty || Form2.controls['BIcity'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIcity'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>State <span style="color: red;">*</span></label>
+              <input formControlName="BIstate" class="form-control" type="text" placeholder="New York">
+              <div
+                *ngIf="Form2.controls['BIstate'].invalid && (Form2.controls['BIstate'].dirty || Form2.controls['BIstate'].touched)"
+                class="text-danger">
+                <div *ngIf="Form2.controls['BIstate'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>ZIP Code</label>
+              <input formControlName="zip_code" desable="true" class="form-control" type="text" placeholder="123">
+            </div>
+            <div class="col-md-12 form-group">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="create_an_account" type="checkbox" class="custom-control-input" id="newaccount">
+                <label class="custom-control-label" for="newaccount">Create an account</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="ship_to_different_address" type="checkbox" class="custom-control-input"
+                  id="shipto">
+                <label class="custom-control-label" for="shipto" data-toggle="collapse"
+                  data-target="#shipping-address">Ship
+                  to different address</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="Form" class="collapse mb-5" id="shipping-address">
+          <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">adresse de
+              livraison</span></h5>
+          <div class="bg-light p-30">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>First Name <span style="color: red;">*</span></label>
+                <input formControlName="SAfirstName" class="form-control" type="text" placeholder="John">
+                <div
+                  *ngIf="Form.controls['SAfirstName'].invalid && (Form.controls['SAfirstName'].dirty || Form.controls['SAfirstName'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAfirstName'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Last Name <span style="color: red;">*</span></label>
+                <input formControlName="SAlastName" class="form-control" type="text" placeholder="Doe">
+                <div
+                  *ngIf="Form.controls['SAlastName'].invalid && (Form.controls['SAlastName'].dirty || Form.controls['SAlastName'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAlastName'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>E-mail</label>
+                <input formControlName="SAemail" class="form-control" type="text" placeholder="example@SAemail.com">
+                <!-- <div
+                *ngIf="Form.controls['SAemail'].invalid && (Form.controls['SAemail'].dirty || Form.controls['SAemail'].touched)"
+                class="text-danger">
+                <div *ngIf="Form.controls['SAemail'].errors?.['required']">Le champ est réquis.</div>
+                <div *ngIf="Form.controls['SAemail'].errors?.['email']">Format incorrect.</div>
+              </div> -->
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Mobile No <span style="color: red;">*</span></label>
+                <input formControlName="SAphone" class="form-control" type="text" placeholder="+237652196847">
+                <div
+                  *ngIf="Form.controls['SAphone'].invalid && (Form.controls['SAphone'].dirty || Form.controls['SAphone'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAphone'].errors?.['required']">Le champ est réquis.</div>
+                  <div *ngIf="Form.controls['SAphone'].errors?.['pattern']">Respecter le format svp Please enter in the
+                    format '+XXXXXXXXXXXX</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Address Line 1 <span style="color: red;">*</span></label>
+                <input formControlName="SAadress1" class="form-control" type="text" placeholder="123 Street">
+                <div
+                  *ngIf="Form.controls['SAadress1'].invalid && (Form.controls['SAadress1'].dirty || Form.controls['SAadress1'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAadress1'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Address Line 2 </label>
+                <input formControlName="SAadress2" class="form-control" type="text" placeholder="123 Street">
+                <div
+                  *ngIf="Form.controls['SAadress2'].invalid && (Form.controls['SAadress2'].dirty || Form.controls['SAadress2'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAadress2'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Company</label>
+                <input formControlName="SAcompany" class="form-control" type="text" placeholder="company name">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Country <span style="color: red;">*</span></label>
+                <select formControlName="SAcountry" class="custom-select">
+                  <option selected>Cameroun</option>
+                  <!-- <option>Afghanistan</option>
+                              <option>Albania</option>
+                              <option>Algeria</option> -->
+                </select>
+                <div
+                  *ngIf="Form.controls['SAcountry'].invalid && (Form.controls['SAcountry'].dirty || Form.controls['SAcountry'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAcountry'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>City <span style="color: red;">*</span></label>
+                <input formControlName="SAcity" class="form-control" type="text" placeholder="New York">
+                <div
+                  *ngIf="Form.controls['SAcity'].invalid && (Form.controls['SAcity'].dirty || Form.controls['SAcity'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAcity'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>State <span style="color: red;">*</span></label>
+                <input formControlName="SAstate" class="form-control" type="text" placeholder="New York">
+                <div
+                  *ngIf="Form.controls['SAstate'].invalid && (Form.controls['SAstate'].dirty || Form.controls['SAstate'].touched)"
+                  class="text-danger">
+                  <div *ngIf="Form.controls['SAstate'].errors?.['required']">Le champ est réquis.</div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>ZIP Code</label>
+                <input formControlName="SAzip_code" desable="true" class="form-control" type="text" placeholder="123">
+              </div>
+            </div>
+          </div>
+        </form>
+      </form>
+      <div class="col-lg-4">
+        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order
+            Total</span>
+        </h5>
+        <div class="bg-light p-30 mb-5">
+          <div class="border-bottom">
+            <h6 class="mb-3">Products</h6>
+            <ng-container *ngFor="let item of shopcartService.orderItems">
+              <div class="d-flex justify-content-between">
+                <p style="font-size: 0.8em;">{{item.name}}</p>
+                <p style="color: black;  font-weight: 600;">{{convertNumber(item.total)|fcfa}}</p>
+              </div>
+            </ng-container>
+          </div>
+          <div class="border-bottom pt-3 pb-2">
+            <div class="d-flex justify-content-between mb-3">
+              <h6>Subtotal</h6>
+              <h6>{{shopcartService.subtotal|fcfa}}</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h6 class="font-weight-medium">Shipping</h6>
+              <h6 class="font-weight-medium"><span style="color: green;">{{shopcartService.shipping_amount|fcfa}}</span>
+              </h6>
+            </div>
+          </div>
+          <div class="pt-2">
+            <div class="d-flex justify-content-between mt-2">
+              <h5>Total</h5>
+              <h5><span style="color: green;">{{shopcartService.total|fcfa}}</span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="mb-5">
+          <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span>
+          </h5>
+          <form [formGroup]="paymentForm" class="bg-light p-30">
+            <div class="form-group">
+              <label>Methode de paiement <span style="color: red;">*</span></label>
+              <select formControlName="payment" class="custom-select">
+                <option>Cash</option>
+                <option>MTN MOMO</option>
+                <option selected>ORANGE MONEY</option>
+              </select>
+              <div
+                *ngIf="paymentForm.controls['payment'].invalid && (paymentForm.controls['payment'].dirty || paymentForm.controls['payment'].touched)"
+                class="text-danger">
+                <div *ngIf="paymentForm.controls['payment'].errors?.['required']">Le champ est réquis.</div>
+              </div>
+            </div>
+            <br><br>
+            <!-- <div class="form-group">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" formControlName="payment" name="payment" id="paypal">
+              <label class="custom-control-label" for="paypal">ORANGE MONEY</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" formControlName="payment" name="payment"
+                id="directcheck">
+              <label class="custom-control-label" for="directcheck">MTN MOMO</label>
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" formControlName="payment" name="payment"
+                id="banktransfer">
+              <label class="custom-control-label" for="banktransfer">Cash</label>
+            </div>
+          </div> -->
+            <button [disabled]="Form2.invalid||paymentForm.invalid" (click)="onSubmit()"
+              class="btn btn-block btn-primary font-weight-bold py-3">Passer la commande</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #sinon>
+    <div class="mx-auto d-flex align-items-center" style="margin: 20%;">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-light" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

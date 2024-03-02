@@ -9,52 +9,52 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class VendorComponent implements OnInit {
   public data:any = 0
   @Input() inputexemple= 100
-  
+
 ngOnInit(){
   this.data = this.inputexemple;
 }
 
   images=[
     {
-    "src":"assets/image/vendor-8.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-7.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-6.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-5.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-4.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-3.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-2.jpg",
-    "alt":"",
-    'title': ""
-  },
-    {
-    "src":"assets/image/vendor-1.jpg",
-    "alt":"",
-    'title': ""
-  },
+      "src":"assets/image/vendor-8.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-7.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-6.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-5.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-4.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-3.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-2.webp",
+      "alt":"",
+      'title': ""
+    },
+      {
+      "src":"assets/image/vendor-1.webp",
+      "alt":"",
+      'title': ""
+    },
 ]
   customOptions: OwlOptions = {
     loop: true,

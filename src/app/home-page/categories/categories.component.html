@@ -1,12 +1,14 @@
 <div class="container-fluid pt-5">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
+            class="bg-secondary pr-3">Categories</span></h2>
     <div class="row px-xl-5 pb-3">
-        <ng-container *ngFor="let item of productscategorie">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+        <ng-container *ngIf="!loadingcategorie">
+            <div *ngFor="let item of productscategorie" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a *ngIf="item.id" [routerLink]="['/shop', item.id]" class="text-decoration-none" >
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" [src]="item.image?.src" [title]="item.image?.title" [alt]="item.image?.title">
+                            <img class="img-fluid" [src]="item.image?.src" [title]="item.image?.title"
+                                [alt]="item.image?.title">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>{{item.name}}</h6>
@@ -16,5 +18,26 @@
                 </a>
             </div>
         </ng-container>
+        <ng-container *ngIf="loadingcategorie">
+            <div *ngFor="let i of numbers" class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <div class="skeleton-animation"></div>
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>
+                                <div class="skeleton-animation" style="width: 150px; height: 20px;"></div>
+                            </h6>
+                            <small class="text-body">
+                                <div class="skeleton-animation" style="width: 100px; height: 15px;"></div>
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </ng-container>
+
+
     </div>
 </div>

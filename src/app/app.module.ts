@@ -25,7 +25,7 @@ import { ShopProductStartComponent } from './shop-page/shop-product-start/shop-p
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginpageComponent } from './account/loginpage/loginpage.component';
 import { SignuppageComponent } from './account/signuppage/signuppage.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmsignupComponent } from './account/signuppage/confirmsignup/confirmsignup.component';
 import { ForgotpasswordComponent } from './account/forgotpassword/forgotpassword.component';
 import { SearchComponent } from './search/search.component';
@@ -36,10 +36,15 @@ import { WoocommerceProductsService } from './services/products/woocommerce-prod
 import { AuthService } from './services/auth/auth.service';
 import { WoocommerceHelperService } from './services/helper.service';
 import { WoocommerceCategoriesService } from './services/categories/woocommerce-categories.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { FCFAPipe } from './pipes/fcfa.pipe';
+import { CheckoutComponent } from './checkout/checkout.component';
 //import { AuthService, WoocommerceCategoriesService, WoocommerceHelperService, WoocommerceProductsService } from 'projects/wooapi/src/wooApi';
 
 @NgModule({
   declarations: [
+    FCFAPipe,
     AppComponent,
     HomePageComponent,
     FooterPageComponent,
@@ -63,8 +68,11 @@ import { WoocommerceCategoriesService } from './services/categories/woocommerce-
     SearchComponent,
     StatusAccountComponent,
     LoadingModalComponent,
+    CardProductComponent,
+    CheckoutComponent,
   ],
   imports: [
+    FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
     BrowserModule,
@@ -74,7 +82,7 @@ import { WoocommerceCategoriesService } from './services/categories/woocommerce-
     NgxWebstorageModule.forRoot(),
     FormsModule,
     ToastrModule.forRoot(),
-    
+
   ],
   providers: [
     // {
@@ -82,6 +90,7 @@ import { WoocommerceCategoriesService } from './services/categories/woocommerce-
     //   useClass: AppInterceptor,
     //   multi: true
     // },
+    // {provide: LocationStrategy, useClass:HashLocationStrategy},
     AuthService,
     AppInterceptor,
     WoocommerceProductsService,

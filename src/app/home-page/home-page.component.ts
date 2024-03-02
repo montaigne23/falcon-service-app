@@ -25,20 +25,20 @@ export class HomePageComponent implements OnInit {
 
   }
   async ngOnInit() {
-    this.val = 8
-    this.loginPayload.password = "19032001Lf@#";
-    this.loginPayload.username = "montaigne";
+    // this.val = 8
+    // this.loginPayload.password = "19032001Lf@#";
+    // this.loginPayload.username = "montaigne";
 
     // await this.authService.getAuthToken(this.loginPayload).subscribe(response => {
     //   console.log(response);
     // }, err => {
     //   console.log(err);
     // });
-    await this.wooProducs.retrieveProducts().subscribe(response => {
-      console.log(response);
-    }, err => {
-      console.log(err);
-    });
+    // await this.wooProducs.retrieveProducts().subscribe(response => {
+    //   // console.log(response);
+    // }, err => {
+    //   console.log(err);
+    // });
     // await this.woocategorie.retrieveCategories().subscribe(response => {
     //   console.log(response)
     // }, err => {

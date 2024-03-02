@@ -11,8 +11,8 @@ export interface Product {
   status?: string;
   featured?: boolean;
   catalog_visibility?: string;
-  description?: string;
-  short_description?: string;
+  description: string;
+  short_description: string;
   sku?: string;
   price?: string;
   regular_price?: string;
@@ -106,12 +106,12 @@ export interface ProductQuery {
   orderby?: ProductOrderBy;
   parent?: Array<string>;
   parent_exclude?: Array<string>;
-  slug?: string;
+  slug?: string|null;
   status?: string;
   type?: string;
   sku?: string;
   featured?: boolean;
-  category?: string;
+  category: string|null;
   tag?: string;
   shipping_class?: string;
   attribute?: string;

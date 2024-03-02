@@ -1,18 +1,34 @@
 <form action="">
-    <div class="input-group">
-        <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm"
-            [ngModelOptions]="{standalone: true}" (input)="onSearchInput($event)" placeholder="Search for products">
-        <div class="input-group-append">
-            <span class="input-group-text bg-transparent text-primary">
-                <i class="fa fa-search"></i>
-            </span>
-        </div>
-    </div>
+  <div class="input-group">
+    <input type="text" class="form-control" (focus)="onInputFocus()" (blur)="onInputBlur()" [(ngModel)]="searchTerm"
+      [ngModelOptions]="{standalone: true}" (input)="onSearchInput($event)" [value]="param" placeholder="Search for products">
+    <button type="submit" (click)="goToShop()" class="input-group-append" style="cursor: pointer;border:none">
+      <span class="input-group-text bg-transparent text-primary">
+        <i class="fa fa-search"></i>
+      </span>
+    </button>
+  </div>
 </form>
+
 <div *ngIf='isInputFocused && this.searchTerm.trim() != ""' class="list-group dropdown-menu"
-    style="max-width: 500px;min-width: 300px; padding-top: -5px;">
-    <a *ngFor="let product of products1" href="#" class="list-group-item dropdown-item">
-        <img [src]="product.image" class="img-fluid mr-3" style="width: 80px; height: auto;" alt="{{ product.name }}">
-        {{ product.name }}
-    </a>
+  style="width: 300px; padding-top: -5px;">
+  <ng-container *ngFor="let product of products">
+    <div class="list-group-item dropdown-item">
+      <div *ngIf="product.categories" class="row" style="cursor: pointer;"
+        [routerLink]="['/shop', product.categories[0].id, product.slug]">
+        <img [src]="product.images[0].src" class="img-fluid mr-3 col-3" style="width: 80px; height: auto;"
+          alt="{{ product.name }}">
+        <div style="width: 100px;">
+        </div>
+        <p class="" style="font-size: 0.8em;">
+          {{ product.name }}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="products && products.length>4">
+    <!-- <br> -->
+    <a style="color: blue;">Voir plus</a>
+    <!-- <br> -->
+  </ng-container>
 </div>

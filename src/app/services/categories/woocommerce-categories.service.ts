@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import {
   ProductCategory,
   CategoryQuery
- } from './product-categories.interface';
+} from './product-categories.interface';
 import { WoocommerceHelperService } from '../helper.service';
 import { environment } from 'src/environments/environment';
 import { AppInterceptor } from 'src/app/appIntercetor';
@@ -17,7 +17,7 @@ export class WoocommerceCategoriesService {
   constructor(
     private httpClient: HttpClient,
     private wooHelper: WoocommerceHelperService,
-    private appInterceptor:AppInterceptor
+    private appInterceptor: AppInterceptor
   ) { }
 
   /**
@@ -57,7 +57,7 @@ export class WoocommerceCategoriesService {
    */
   updateCategory(id: number, payload: ProductCategory): Observable<ProductCategory> {
     return this.httpClient.put<ProductCategory>(`products/categories/${id}`, payload)
-    .pipe(catchError(err => this.wooHelper.handleError(err)));
+      .pipe(catchError(err => this.wooHelper.handleError(err)));
   }
 
   /**
@@ -65,6 +65,6 @@ export class WoocommerceCategoriesService {
    */
   deleteCategory(id: number): Observable<ProductCategory> {
     return this.httpClient.delete<ProductCategory>(`products/categories/${id}`)
-    .pipe(catchError(err => this.wooHelper.handleError(err)));
+      .pipe(catchError(err => this.wooHelper.handleError(err)));
   }
 }

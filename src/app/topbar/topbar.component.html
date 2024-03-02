@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: white;">
+<div class="container-fluid sticky-top" style="background-color: white;">
     <div class="row bg-secondary py-1 px-xl-5 d-none">
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="align-items-center bg-light pt-2 px-xl-5 d-lg-flex">
         <div class="row justify-content-between d-lg-none">
             <div class=" col text-left text-decoration-none d-block" style=" max-width: 500px; ">
@@ -43,26 +43,25 @@
             </div>
         </div>
     </div>
-    
+
 
 
         <div class="row justify-content-between  align-items-center bg-light py-2 pt-2 px-xl-5 d-none d-lg-flex">
-            <div class="col-lg-4 col">
-                <a href="" class="text-decoration-none">
-                    <span class="h1 text-uppercase text-primary bg-dark px-2">FALCON</span>
-                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">SERVICES</span>
-                </a>
+            <div style="cursor: pointer;" [routerLink]="['/home']" class="logo col">
+              <img src="assets/image/logo.jpg"  alt="Falcon service shop">
             </div>
 
             <div class="col-lg-4 col-6 text-left ">
                 <app-search></app-search>
             </div>
             <div class="col-lg-4 col-6 text-right">
-                <p class="m-0">Service Client</p>
+                <!-- <p class="m-0">Service Client</p> -->
                 <a class="text-body px-2" href="mailto:info@example.com"><i
-                        class="fa fa-envelope-open text-primary me-2"
+                        class="fa fa-envelope-open me-2"
                         style="margin-right: 3px;"></i>info@example.com</a>
-                <a class="text-body px-2" href="mailto:info@example.com"><i class="fa fa-phone-alt text-primary me-2"
-                        style="margin-right: 3px;"></i>+237 699397286</a>
+                <a href="" class="text-body px-2" href="https://api.whatsapp.com/send?phone=237656708582" target="_blank"><i class="fab fa-whatsapp text-success me-2"
+                        style="margin-right: 3px;"></i>+237 656708582</a>
+                <!-- <a class="text-body px-2" href="mailto:info@example.com"><i class="fa fa-phone-alt text-primary me-2"
+                        style="margin-right: 3px;"></i>+237 699397286</a> -->
             </div>
     </div>

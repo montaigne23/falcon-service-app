@@ -4,8 +4,17 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" routerLink="/home">Home</a>
-                    <a class="breadcrumb-item text-dark" routerLink="/shop" >Shop</a>
-                    <span class="breadcrumb-item active">Shop List</span>
+                    <a class="breadcrumb-item text-dark" (click)="navigateToCategory()" >Shop</a>
+                    <span *ngIf="activecategory != ''; else elseCategory" class="breadcrumb-item" >Shop List</span>
+
+                    <span *ngIf="shopServiceService.productQuery.search!=''"  class="breadcrumb-item active" >recherche : "{{shopServiceService.productQuery.search}}"</span>
+
+                    <ng-template #elseCategory>
+                        <ng-container>
+                          <span  class="breadcrumb-item active" >Shop List</span>
+                        </ng-container>
+                      </ng-template>
+                    <span *ngIf="activecategory != ''" class="breadcrumb-item active" >{{activecategory}}</span>
                 </nav>
             </div>
         </div>
@@ -14,14 +23,14 @@
 
 
     <!-- Shop Start -->
-    <div class="container-fluid">
-        <div class="row px-xl-5">
+    <div class="">
+        <!-- <div class="row px-xl-5"> -->
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-8">
+            <!-- <div class="col-lg-9 col-md-8"> -->
                 <app-shop-product-start></app-shop-product-start>
-            </div>
+            <!-- </div> -->
             <!-- Shop Product End -->
-        </div>
+        <!-- </div> -->
     </div>
     <!-- Shop End -->

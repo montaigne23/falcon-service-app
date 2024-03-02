@@ -1,4 +1,4 @@
-{
+}
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "outputHashing": "all",
+            "namedChunks": false,
+            "aot": true,
             "outputPath": "dist/falcon_service",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,7 +30,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config",
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
@@ -37,6 +46,7 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/assets/lib/animate/animate.min.css",
               "src/assets/scss/style.scss",
+              "src/assets/scss/FontAwesome/css/all.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
